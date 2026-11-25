@@ -1,0 +1,75 @@
+.footer {
+  background: var(--cocoa);
+  color: rgba(251, 248, 243, 0.78);
+  padding-top: clamp(4rem, 8vw, 6rem);
+  font-size: 0.92rem;
+}
+.top {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 2.4fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+  border-bottom: 1px solid rgba(217, 192, 143, 0.18);
+}
+.brand img {
+  width: 220px;
+  height: auto;
+}
+.brand p {
+  margin-top: 1.5rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  max-width: 300px;
+  color: rgba(251, 248, 243, 0.7);
+}
+.cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.cols > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.cols h2 {
+  color: var(--gold-soft);
+  margin-bottom: 0.8rem;
+}
+.cols address {
+  font-style: normal;
+}
+.cols a {
+  width: fit-content;
+  transition: color 0.3s;
+}
+.cols a:hover {
+  color: var(--gold-soft);
+}
+.muted {
+  opacity: 0.6;
+  font-size: 0.82rem;
+}
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-block: 1.6rem 2rem;
+  font-size: 0.78rem;
+  opacity: 0.6;
+}
+.bottom nav {
+  display: flex;
+  gap: 1.5rem;
+}
+@media (max-width: 900px) {
+  .top {
+    grid-template-columns: 1fr;
+  }
+  .cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

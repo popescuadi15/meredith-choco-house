@@ -1,0 +1,190 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+.open {
+  pointer-events: auto;
+}
+.scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(28, 19, 15, 0.45);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease);
+  cursor: default;
+}
+.open .scrim {
+  opacity: 1;
+}
+.panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(460px, 100%);
+  background: var(--ivory);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.7s var(--ease);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  outline: none;
+}
+.open .panel {
+  transform: none;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem 1.75rem;
+  border-bottom: 1px solid var(--gold-line);
+}
+.head h2 {
+  font-size: 2rem;
+}
+.head h2 span {
+  font-size: 2.4rem;
+}
+.close {
+  border: 0;
+  background: none;
+  font-size: 2rem;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+}
+.empty {
+  padding: 3rem 1.75rem;
+  display: grid;
+  gap: 1.5rem;
+  justify-items: start;
+  color: var(--ink-soft);
+}
+.lines {
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 1.75rem;
+}
+.lines li {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--gold-line);
+}
+.thumb {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  background: var(--paper);
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  font-size: 2rem;
+}
+.thumb img {
+  object-fit: contain;
+  padding: 6px;
+}
+.name {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+.price {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  margin-top: 0.2rem;
+}
+.qty {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.6rem;
+  border: 1px solid var(--gold-line);
+  border-radius: 999px;
+}
+.qty button {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  background: none;
+  font-size: 1rem;
+}
+.qty span {
+  min-width: 24px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+.remove {
+  border: 0;
+  background: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.form {
+  display: grid;
+  gap: 1rem;
+  padding: 1.4rem 1.75rem 0.5rem;
+}
+.form label {
+  display: grid;
+  gap: 0.35rem;
+}
+.form span {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.form input,
+.form textarea {
+  font: inherit;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--gold-line);
+  border-radius: 4px;
+  background: var(--white);
+  resize: vertical;
+}
+.foot {
+  margin-top: auto;
+  padding: 1.5rem 1.75rem 2rem;
+  display: grid;
+  gap: 0.75rem;
+}
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+}
+.total strong {
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+.note {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+}
+.clear {
+  border: 0;
+  background: none;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  justify-self: center;
+  padding: 0.5rem;
+}

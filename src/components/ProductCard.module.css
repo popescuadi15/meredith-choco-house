@@ -1,0 +1,109 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid rgba(176, 138, 80, 0.18);
+  transition:
+    box-shadow 0.6s var(--ease),
+    transform 0.6s var(--ease),
+    opacity 1s var(--ease);
+}
+.card:hover {
+  box-shadow: 0 30px 60px -35px rgba(60, 40, 20, 0.35);
+}
+.media {
+  position: relative;
+  aspect-ratio: 4 / 3.4;
+  background: radial-gradient(70% 70% at 50% 45%, #ffffff, var(--paper));
+  overflow: hidden;
+  display: block;
+}
+.cut {
+  object-fit: contain;
+  padding: 9%;
+  filter: drop-shadow(0 20px 22px rgba(60, 40, 20, 0.22));
+  transition: transform 0.9s var(--ease);
+}
+.photo {
+  object-fit: cover;
+  transition: transform 0.9s var(--ease);
+}
+.card:hover .cut,
+.card:hover .photo {
+  transform: scale(1.05);
+}
+.mono {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  gap: 0.3rem;
+  background:
+    linear-gradient(135deg, rgba(217, 192, 143, 0.15), transparent),
+    var(--cocoa);
+  color: var(--gold-soft);
+}
+.mono .script,
+.mono :global(.script) {
+  font-size: clamp(2.6rem, 4vw, 3.4rem);
+  line-height: 1;
+}
+.mono small {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: rgba(251, 248, 243, 0.75);
+  text-transform: capitalize;
+}
+.badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--ivory);
+  color: var(--gold-deep);
+  border: 1px solid var(--gold-line);
+}
+.body {
+  padding: 1.4rem 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.body h3 {
+  font-size: 1.5rem;
+  line-height: 1.15;
+}
+.body p {
+  margin-top: 0.5rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  flex: 1;
+}
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
+}
+.price {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+}
+.price small {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+.add {
+  min-height: 40px;
+  padding: 0 1.1rem;
+  font-size: 0.68rem;
+}

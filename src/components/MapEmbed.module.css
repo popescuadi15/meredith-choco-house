@@ -1,0 +1,41 @@
+.map {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background:
+    radial-gradient(60% 60% at 50% 40%, #3a261b, var(--cocoa));
+  color: var(--ivory);
+  overflow: hidden;
+}
+.map iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(0.4) sepia(0.15);
+}
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  gap: 0.6rem;
+  padding: 2rem;
+}
+.placeholder :global(.script) {
+  font-size: 3.4rem;
+  line-height: 1;
+}
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+.placeholder small {
+  opacity: 0.55;
+  margin-top: 0.4rem;
+}

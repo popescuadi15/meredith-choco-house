@@ -1,0 +1,166 @@
+.section {
+  --dawn: 1;
+  --golden: 0;
+  --night: 0;
+  --sun: 0;
+  position: relative;
+  height: 420vh;
+  background: var(--cocoa);
+  color: var(--ivory);
+}
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+.photo {
+  position: absolute;
+  inset: -4%;
+  transform: scale(calc(1.02 + var(--sun) * 0.0008));
+  filter: brightness(calc(1.02 - var(--night) * 0.55)) saturate(calc(1 - var(--night) * 0.35)) contrast(calc(1 + var(--night) * 0.1));
+}
+.photo img {
+  object-fit: cover;
+}
+.layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.dawn {
+  background: linear-gradient(180deg, rgba(255, 228, 205, 0.55), rgba(255, 240, 225, 0.15));
+  mix-blend-mode: soft-light;
+  opacity: var(--dawn);
+}
+.golden {
+  background: radial-gradient(90% 80% at 85% 20%, rgba(255, 170, 70, 0.55), rgba(255, 140, 40, 0.1) 60%, transparent);
+  mix-blend-mode: soft-light;
+  opacity: var(--golden);
+}
+.night {
+  background: linear-gradient(180deg, #0b1a33 0%, #10233f 60%, #1b1410 100%);
+  mix-blend-mode: multiply;
+  opacity: calc(var(--night) * 0.85);
+}
+.lamp {
+  background:
+    radial-gradient(28% 32% at 38% 42%, rgba(255, 196, 120, 0.5), transparent 70%),
+    radial-gradient(20% 24% at 70% 30%, rgba(255, 190, 110, 0.35), transparent 70%);
+  mix-blend-mode: screen;
+  opacity: var(--night);
+}
+.shade {
+  background:
+    linear-gradient(90deg, rgba(18, 10, 6, 0.75) 0%, rgba(18, 10, 6, 0.2) 45%, transparent 70%),
+    linear-gradient(180deg, rgba(18, 10, 6, 0.5), transparent 25%);
+}
+.head {
+  position: absolute;
+  top: calc(var(--header-h) + 1.5rem);
+  left: var(--gutter);
+}
+.head :global(.eyebrow) {
+  color: var(--gold-soft);
+}
+.head h2 {
+  margin-top: 0.6rem;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 300;
+}
+.head em {
+  font-style: italic;
+  color: var(--gold-soft);
+}
+.card {
+  position: absolute;
+  top: calc(var(--header-h) + 1.5rem);
+  right: var(--gutter);
+  width: clamp(170px, 18vw, 240px);
+  padding: 1.2rem 1.3rem 1rem;
+  background: rgba(251, 248, 243, 0.94);
+  color: var(--cocoa);
+  border-radius: 6px;
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.6);
+  display: grid;
+  gap: 0.4rem;
+}
+.time {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 4.6vw, 4rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.label {
+  font-size: 0.6rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.track {
+  display: block;
+  height: 2px;
+  background: rgba(176, 138, 80, 0.25);
+  margin-top: 0.4rem;
+}
+.track i {
+  display: block;
+  height: 100%;
+  width: calc(var(--sun) * 1%);
+  background: var(--gold);
+}
+.moments {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: var(--gutter);
+  bottom: clamp(2.5rem, 8vh, 5rem);
+  width: min(520px, calc(100% - 2 * var(--gutter)));
+  height: 13rem;
+}
+.moments li {
+  position: absolute;
+  inset: auto 0 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+}
+.moments li.past {
+  transform: translateY(-30px);
+}
+.moments li.on {
+  opacity: 1;
+  transform: none;
+}
+.hour {
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  color: var(--gold-soft);
+}
+.moments h3 {
+  margin-top: 0.5rem;
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  font-weight: 300;
+}
+.moments p {
+  margin-top: 0.8rem;
+  color: rgba(251, 248, 243, 0.8);
+  max-width: 420px;
+}
+@media (max-width: 760px) {
+  .head {
+    top: calc(var(--header-h) + 8.5rem);
+  }
+  .card {
+    width: 150px;
+    padding: 0.9rem 1rem 0.8rem;
+  }
+  .shade {
+    background: linear-gradient(0deg, rgba(18, 10, 6, 0.85) 0%, rgba(18, 10, 6, 0.2) 55%, rgba(18, 10, 6, 0.45) 100%);
+  }
+}

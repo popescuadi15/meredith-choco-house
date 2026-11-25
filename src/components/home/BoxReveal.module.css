@@ -1,0 +1,208 @@
+.section {
+  --open: 0;
+  position: relative;
+  height: 320vh;
+  background:
+    radial-gradient(60% 60% at 50% 55%, #ffffff 0%, var(--ivory) 70%);
+}
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(0, 1.5fr) minmax(220px, 0.9fr);
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding: var(--header-h) var(--gutter) 2rem;
+}
+.copy h2 {
+  margin-top: 1rem;
+  font-size: clamp(2.2rem, 3.6vw, 3.6rem);
+  font-weight: 400;
+}
+.copy h2 em {
+  display: block;
+  font-style: italic;
+  color: var(--gold-deep);
+}
+.lead {
+  margin-top: 1.2rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  max-width: 360px;
+}
+.buy {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.4rem;
+}
+.price {
+  font-family: var(--serif);
+  font-size: 2rem;
+}
+.price small {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+}
+.more {
+  display: inline-block;
+  margin-top: 1.4rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+}
+
+.stage {
+  perspective: 1600px;
+  display: grid;
+  place-items: center;
+}
+.box {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  aspect-ratio: 694 / 530;
+  transform-style: preserve-3d;
+  transform: rotateX(calc(28deg - var(--open) * 22deg)) rotateZ(calc(-4deg + var(--open) * 4deg)) scale(calc(0.9 + var(--open) * 0.1));
+}
+.base {
+  position: absolute;
+  inset: 0;
+  filter: drop-shadow(0 40px 40px rgba(60, 40, 20, 0.22));
+}
+.base img {
+  object-fit: contain;
+}
+.lid {
+  position: absolute;
+  inset: -1.5%;
+  transform-origin: 50% 0%;
+  transform-style: preserve-3d;
+  transform: translateZ(2px) translateY(calc(var(--open) * -18%)) rotateX(calc(var(--open) * 115deg));
+  opacity: calc(1 - clamp(0, (var(--open) - 0.72) * 4, 1));
+}
+.lidFace {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, #ffffff 0%, #f6f1e8 55%, #ece4d6 100%);
+  border-radius: 3px;
+  box-shadow:
+    inset 0 0 0 1px rgba(176, 138, 80, 0.25),
+    0 30px 50px -20px rgba(60, 40, 20, 0.35);
+  overflow: hidden;
+}
+.ribbonH,
+.ribbonV {
+  position: absolute;
+  background: linear-gradient(180deg, #9c7a43, #e9d29b 45%, #b8955a 60%, #8a6a37);
+}
+.ribbonH {
+  left: 0;
+  right: 0;
+  top: 58%;
+  height: 7%;
+}
+.ribbonV {
+  top: 0;
+  bottom: 0;
+  left: 70%;
+  width: 5.5%;
+  background: linear-gradient(90deg, #9c7a43, #e9d29b 45%, #b8955a 60%, #8a6a37);
+}
+.bow {
+  position: absolute;
+  width: 26%;
+  left: calc(72.75% - 13%);
+  top: calc(61.5% - 11%);
+  filter: drop-shadow(0 6px 8px rgba(60, 40, 20, 0.35));
+}
+.lidLogo {
+  position: absolute;
+  left: 10%;
+  top: 14%;
+  width: 34% !important;
+  height: auto !important;
+  opacity: 0.95;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.2rem;
+  font-size: 0.85rem;
+}
+.list li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--gold-line);
+  opacity: 0.45;
+  transition: opacity 0.6s var(--ease);
+}
+.list li.on,
+.list li.choc {
+  opacity: 1;
+}
+.list span {
+  font-size: 0.7rem;
+  color: var(--gold-deep);
+  padding-top: 0.25rem;
+}
+.list strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.35rem;
+}
+.list em {
+  display: block;
+  font-style: normal;
+  color: var(--ink-soft);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s var(--ease);
+}
+.list li.on em,
+.list li.choc em {
+  max-height: 4rem;
+}
+
+@media (max-width: 1000px) {
+  .section {
+    height: 260vh;
+  }
+  .sticky {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    align-content: start;
+    padding-top: calc(var(--header-h) + 1rem);
+    gap: 1rem;
+  }
+  .lead,
+  .more,
+  .list {
+    display: none;
+  }
+  .copy h2 {
+    font-size: clamp(2rem, 8vw, 2.6rem);
+  }
+  .buy {
+    margin-top: 1rem;
+  }
+}
+.list,
+.copy {
+  position: relative;
+  z-index: 2;
+}
