@@ -22,11 +22,13 @@ swiftc -O scripts/cutout.swift -o /tmp/cutout
 ```
 Then add it to the `cuts` map in `process-images.mjs` and rerun the script.
 
-## Deploy
-Vercel (recommended): import the `web` folder and point the meredithchoco.ro domain at it.
+## Deploy (final: Cloudflare Pages)
+Build command: `npm run build:static` · Output directory: `out` · Node 22.
+Then attach the meredithchoco.ro domain. Do **not** set `SITE_PREVIEW` there (that would noindex the live site).
+Once Cloudflare is live, delete `.github/workflows/deploy-pages.yml` and disable GitHub Pages.
 
 ## Client preview (GitHub Pages)
 Every push to `main` runs `.github/workflows/deploy-pages.yml`: lint + typecheck, then a static export
-(`PAGES_BASE_PATH` = repo path) uploaded to GitHub Pages. The preview is `noindex` and its robots.txt
+(`PAGES_BASE_PATH` = repo path, `SITE_PREVIEW=1`) uploaded to GitHub Pages. The preview is `noindex` and its robots.txt
 disallows crawling, so it never competes with meredithchoco.ro in Google.
 One-time setup: repo **Settings → Pages → Source: GitHub Actions**.
