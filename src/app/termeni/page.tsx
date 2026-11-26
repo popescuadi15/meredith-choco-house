@@ -17,7 +17,7 @@ export default function Terms() {
           </p>
           <h2>Comenzi</h2>
           <p>
-            Site-ul prezintă produsele și prețurile noastre. Comenzile se plasează telefonic ({site.phone}) sau prin WhatsApp și devin ferme doar după confirmarea noastră. Toate produsele sunt realizate manual, la comandă, cu 24–48 de ore înainte.
+            Site-ul prezintă produsele și prețurile noastre. Comenzile se plasează telefonic ({site.phone}) sau prin WhatsApp și devin ferme doar după confirmarea noastră. Toate produsele sunt realizate manual, la comandă: tabletele cu 24–48 de ore înainte, cutiile cadou cu minimum 48 de ore, restul produselor cu 48–72 de ore.
           </p>
           <h2>Prețuri și plată</h2>
           <p>Prețurile sunt exprimate în lei. Pentru evenimente, prețul final se stabilește după degustare, în funcție de cerințe. Plata se face la ridicarea comenzii.</p>

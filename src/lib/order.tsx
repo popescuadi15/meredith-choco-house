@@ -1,9 +1,11 @@
 "use client";
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { bySlug } from "./products";
+import { bySlug, linePrice } from "./products";
 
-export type OrderLine = { slug: string; qty: number };
+export type OrderLine = { slug: string; qty: number; variant?: string };
+
+export const lineKey = (l: Pick<OrderLine, "slug" | "variant">) => (l.variant ? `${l.slug}:${l.variant}` : l.slug);
 
 type OrderCtx = {
   lines: OrderLine[];
@@ -11,9 +13,9 @@ type OrderCtx = {
   total: number;
   open: boolean;
   setOpen: (v: boolean) => void;
-  add: (slug: string, qty?: number) => void;
-  setQty: (slug: string, qty: number) => void;
-  remove: (slug: string) => void;
+  add: (slug: string, variant?: string, qty?: number) => void;
+  setQty: (key: string, qty: number) => void;
+  remove: (key: string) => void;
   clear: () => void;
 };
 
@@ -38,22 +40,23 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
     if (loaded) localStorage.setItem(KEY, JSON.stringify(lines));
   }, [lines, loaded]);
 
-  const add = useCallback((slug: string, qty = 1) => {
+  const add = useCallback((slug: string, variant?: string, qty = 1) => {
+    const key = lineKey({ slug, variant });
     setLines((ls) => {
-      const found = ls.find((l) => l.slug === slug);
-      if (found) return ls.map((l) => (l.slug === slug ? { ...l, qty: l.qty + qty } : l));
-      return [...ls, { slug, qty }];
+      const found = ls.find((l) => lineKey(l) === key);
+      if (found) return ls.map((l) => (lineKey(l) === key ? { ...l, qty: l.qty + qty } : l));
+      return [...ls, { slug, variant, qty }];
     });
     setOpen(true);
   }, []);
 
-  const setQty = useCallback((slug: string, qty: number) => {
-    setLines((ls) => (qty <= 0 ? ls.filter((l) => l.slug !== slug) : ls.map((l) => (l.slug === slug ? { ...l, qty } : l))));
+  const setQty = useCallback((key: string, qty: number) => {
+    setLines((ls) => (qty <= 0 ? ls.filter((l) => lineKey(l) !== key) : ls.map((l) => (lineKey(l) === key ? { ...l, qty } : l))));
   }, []);
 
   const value = useMemo<OrderCtx>(() => {
     const count = lines.reduce((s, l) => s + l.qty, 0);
-    const total = lines.reduce((s, l) => s + (bySlug(l.slug)?.price ?? 0) * l.qty, 0);
+    const total = lines.reduce((s, l) => { const p = bySlug(l.slug); return s + (p ? linePrice(p, l.variant) : 0) * l.qty; }, 0);
     return {
       lines,
       count,
@@ -62,7 +65,7 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
       setOpen,
       add,
       setQty,
-      remove: (slug) => setQty(slug, 0),
+      remove: (key) => setQty(key, 0),
       clear: () => setLines([]),
     };
   }, [lines, open, add, setQty]);

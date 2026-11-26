@@ -114,8 +114,8 @@
 .pMono {
   display: grid;
   place-items: center;
-  background: var(--cocoa);
-  color: var(--gold-soft);
+  background: radial-gradient(70% 70% at 50% 45%, #ffffff, var(--paper));
+  color: var(--gold-deep);
 }
 .pMono :global(.script) {
   font-size: clamp(4rem, 9vw, 8rem);
@@ -482,4 +482,64 @@
   position: relative;
   width: 100%;
   height: 100%;
+}
+.pPrep {
+  margin-top: 0.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--gold-deep);
+}
+.allergens {
+  margin-top: 2rem;
+  border-top: 1px solid var(--gold-line);
+  border-bottom: 1px solid var(--gold-line);
+}
+.allergens summary {
+  cursor: pointer;
+  padding: 1rem 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+.allergens p,
+.allergens li {
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+}
+.allergens strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+.allergens ul {
+  margin: 0.8rem 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+.allergens .traces {
+  padding-bottom: 1rem;
+  margin-top: 0.6rem;
+}
+.pMore {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin-top: 2rem;
+}
+.pMoreItem {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.pMoreItem img {
+  object-fit: cover;
+}
+.fillings {
+  margin-top: 1rem;
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  line-height: 1.5;
+  color: var(--ivory);
 }

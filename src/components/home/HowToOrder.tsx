@@ -4,7 +4,7 @@ import s from "./Sections.module.css";
 
 const steps = [
   { n: "01", t: "Alegi", d: "Adaugă tabletele, cutiile sau brăduții preferați în „Comanda ta”." },
-  { n: "02", t: "Ne scrii", d: "Trimite lista pe WhatsApp sau sună-ne — cu 24–48 de ore înainte. Stabilim ciocolata, crema și culorile." },
+  { n: "02", t: "Ne scrii", d: "Trimite lista pe WhatsApp sau sună-ne — tablete cu 24–48 h înainte, cutii cu minimum 48 h, restul cu 48–72 h. Stabilim ciocolata, crema și culorile." },
   { n: "03", t: "Ridici", d: `Te așteptăm în atelier, ${site.address.street}, ${site.address.city}. Plata se face la ridicare.` },
 ];
 

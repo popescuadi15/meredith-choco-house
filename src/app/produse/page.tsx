@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import JsonLd from "@/components/JsonLd";
-import { categories, inCategory, type Category } from "@/lib/products";
+import { categories, fillings, inCategory, type Category } from "@/lib/products";
 import { orderRules } from "@/lib/site";
 import { breadcrumbs } from "@/lib/schema";
 import s from "../inner.module.css";
 
 export const metadata: Metadata = {
   title: "Colecții — tablete, cutii cadou, Crăciun",
-  description: "Catalogul Meredith Choco House: tablete de ciocolată pictate manual (25 lei), cutii cadou cu praline (50–200 lei), brăduți și cadouri de Crăciun. Comenzi în Caransebeș, cu 24–48 h înainte.",
+  description: "Catalogul Meredith Choco House: tablete de ciocolată Callebaut (25 lei), tableta Dubai pictată manual, cutii cadou cu praline (50–200 lei), brăduți și cadouri de Crăciun. Comenzi în Caransebeș, ridicare din atelier.",
   alternates: { canonical: "/produse" },
 };
 
@@ -56,7 +56,9 @@ export default function ProductsPage() {
 
       <section className={s.rules}>
         <div className="container">
-          <h2>Bine de știut</h2>
+          <h2>Cele 10 umpluturi</h2>
+          <p className={s.fillings}>{fillings.join(" · ")}</p>
+          <h2 style={{ marginTop: "3rem" }}>Bine de știut</h2>
           <ul>
             {orderRules.map((r) => (
               <li key={r}>{r}</li>

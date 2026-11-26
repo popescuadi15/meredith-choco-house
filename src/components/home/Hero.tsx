@@ -8,11 +8,11 @@ import { ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
 import s from "./Hero.module.css";
 
 const stages = [
-  { a: "Ciocolată", b: "belgiană.", text: "Callebaut și Master Martini. Alegem doar ciocolata pe care am dărui-o celor dragi." },
-  { a: "Topită", b: "încet.", text: "Fără grabă și fără mașinării. Totul începe cu răbdare, în atelierul nostru din Caransebeș." },
-  { a: "Temperată", b: "manual.", text: "Până capătă luciul și ruptura curată a unei ciocolate adevărate." },
-  { a: "Pictată", b: "pentru tine.", text: "Fiecare tabletă și fiecare pralină — colorată de mână, una câte una, în culorile alese de tine." },
-  { a: "Gata de", b: "dăruit.", text: "Fiecare creație are propria poveste, fiecare detaliu poartă semnătura noastră." },
+  { a: "Ciocolată", b: "belgiană.", text: "Callebaut — ciocolată belgiană premium. Fiecare dorință inspiră o creație, fiecare creație devine unică." },
+  { a: "Încălzită", b: "încet.", text: "Fiecare cu timpul și temperatura ei — fiecare tip de ciocolată are o altă temperatură de topire. Totul începe cu pasiunea pentru ciocolată." },
+  { a: "Temperată", b: "manual.", text: "Pentru cele trei semne ale unei ciocolate premium: luciu, pocnet la rupere și contracția care o face să iasă perfect din matriță." },
+  { a: "Pictată", b: "pentru tine.", text: "Colorată și pictată artizanal, fiecare creație e unică. Îți dăruim timp și atenție, ca să o facem exact așa cum ai visat-o." },
+  { a: "Gata de", b: "dăruit.", text: "După câteva ore la răcit, se întărește și e gata de ambalat în cutii premium, după dorința ta — ca să creezi momente de neuitat celor dragi." },
 ];
 
 export default function Hero() {

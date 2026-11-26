@@ -25,7 +25,7 @@ export default function Footer() {
                 {h.days}: {h.time}
               </p>
             ))}
-            <p className={s.muted}>Comenzi telefonic cu 24–48 h înainte</p>
+            <p className={s.muted}>Comenzi telefonic cu 24–72 h înainte</p>
           </div>
           <div>
             <h2 className="eyebrow">Comenzi</h2>

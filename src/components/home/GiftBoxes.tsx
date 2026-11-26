@@ -14,7 +14,7 @@ export default function GiftBoxes() {
               Un dar care <em>se deschide încet.</em>
             </h2>
           </div>
-          <p className={s.intro}>De la cele 12 praline ale cutiei Selection până la Family Moments — fiecare cutie e pictată manual și se pregătește la comandă, în 24–48 de ore.</p>
+          <p className={s.intro}>De la cele 12 praline ale cutiei Selection până la Family Moments — pralinele sunt pictate manual, iar fiecare cutie se pregătește la comandă, în minimum 48 de ore.</p>
         </div>
         <div className={s.grid4}>
           {boxes.map((p) => (

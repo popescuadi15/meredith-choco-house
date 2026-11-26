@@ -46,9 +46,13 @@ export function productSchema(p: Product) {
     brand: { "@type": "Brand", name: site.name },
     ...(p.weight ? { weight: p.weight } : {}),
     offers: {
-      "@type": "Offer",
+      "@type": p.variants ? "AggregateOffer" : "Offer",
       priceCurrency: "RON",
-      ...(p.price !== null ? { price: p.price } : {}),
+      ...(p.variants
+        ? { lowPrice: Math.min(...p.variants.map((v) => v.price)), highPrice: Math.max(...p.variants.map((v) => v.price)), offerCount: p.variants.length }
+        : p.price !== null
+          ? { price: p.price }
+          : {}),
       availability: "https://schema.org/PreOrder",
       url: `${site.url}/produse/${p.slug}`,
       seller: { "@id": businessId },

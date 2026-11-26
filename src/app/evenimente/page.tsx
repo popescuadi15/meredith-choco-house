@@ -31,9 +31,9 @@ export default function EventsPage() {
             <div className={s.featureText}>
               <p className="eyebrow">01 — Mărturii</p>
               <h2>Mărturii de bun venit</h2>
-              <p className={s.big}>de la 5 lei / bucată · 8 g</p>
+              <p className={s.big}>de la 5 lei / bucată · aprox. 10 g</p>
               <p>
-                Într-o gamă foarte mare de forme, culori și umpluturi. Le putem ambala individual sau în cutii de 2, 4, 6, 8 sau 12 bucăți. Stabilim telefonic o ședință de degustare, iar în funcție de dorințe stabilim prețul final.
+                Într-o gamă foarte mare de forme, culori și umpluturi — de exemplu mini tabletele de 10 g cu bucăți de fistic și zmeură liofilizată. Se vând la bucată și se regăsesc și în cutiile noastre cadou. Le putem ambala individual sau în cutii de 2, 4, 6, 8 sau 12 bucăți. Stabilim telefonic o ședință de degustare, iar în funcție de dorințe stabilim prețul final.
               </p>
               <p className={s.tag}>−20% la mărturii dacă alegi și Deluxe Meredith Choco Bar</p>
             </div>

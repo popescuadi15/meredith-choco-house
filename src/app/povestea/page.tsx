@@ -24,7 +24,7 @@ export default function StoryPage() {
             Dragostea pentru ciocolata de calitate a pornit din copilărie. Bunica mea cumpăra ciocolată și o ascundea, ca de fiecare dată când voiam ceva dulce să îmi ofere bucuria de a descoperi o surpriză în dulapul ei din bucătărie.
           </p>
           <p>
-            Așa am descoperit plăcerea de a dărui — și am împletit-o cu dragostea pentru ciocolata belgiană Callebaut, ciocolata italiană Master Martini și ingredientele de calitate.
+            Așa am descoperit plăcerea de a dărui — și am împletit-o cu dragostea pentru ciocolata belgiană premium Callebaut și ingredientele de calitate.
           </p>
           <figure className={`${s.figure} reveal`}>
             <Image src="/images/photos/atelier-callebaut.jpg" alt="Tablete de ciocolată Meredith și saci de ciocolată Callebaut în atelier" fill sizes="(max-width: 900px) 100vw, 900px" />

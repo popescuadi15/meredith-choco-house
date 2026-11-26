@@ -1,0 +1,37 @@
+.wrap {
+  display: contents;
+}
+.picker {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+  margin-bottom: 0.4rem;
+}
+.picker button {
+  flex: 1;
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.7rem 0.5rem;
+  border: 1px solid var(--gold-line);
+  border-radius: 4px;
+  background: var(--white);
+  transition: all 0.3s var(--ease);
+}
+.picker strong {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.1;
+}
+.picker small {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+.picker .on {
+  border-color: var(--cocoa);
+  background: var(--cocoa);
+  color: var(--ivory);
+}
+.picker .on small {
+  color: var(--gold-soft);
+}

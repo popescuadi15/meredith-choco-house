@@ -85,12 +85,12 @@ export default function Collection() {
         <div className={s.head}>
           <p className={s.kicker}>02 — Colecția de tablete</p>
           <h2 id="collection-title" className={s.lead}>
-            Fiecare tabletă e pictată manual, în 100 g de ciocolată belgiană — și umplută exact cum îți dorești.
+            Tablete de 100 g și tablete umplute de 80 g, din ciocolată belgiană Callebaut.
           </h2>
         </div>
         <div className={s.weight} aria-hidden="true">
-          <strong>100g</strong>
-          <span>Pictată manual</span>
+          <strong key={cur.slug}>{cur.weight?.replace(" ", "")}</strong>
+          <span>Ciocolată Callebaut</span>
         </div>
 
         <div className={s.stage}>

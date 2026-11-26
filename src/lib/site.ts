@@ -6,7 +6,7 @@ export const site = {
   url: "https://meredithchoco.ro",
   tagline: "Fiecare creație are propria poveste, fiecare detaliu poartă semnătura noastră.",
   description:
-    "Ciocolaterie artizanală în Caransebeș. Tablete pictate manual, cutii cadou cu praline, brăduți de Crăciun, mărturii de nuntă și botez și Deluxe Choco Bar pentru evenimente — din ciocolată belgiană Callebaut.",
+    "Ciocolaterie artizanală în Caransebeș. Tablete din ciocolată belgiană Callebaut, tableta Dubai, cutii cadou cu praline pictate manual, brăduți de Crăciun, mărturii de nuntă și botez și Deluxe Choco Bar pentru evenimente — din ciocolată belgiană Callebaut.",
   phone: "0728 997 053",
   phoneE164: "+40728997053",
   whatsapp: "40728997053",
@@ -37,7 +37,7 @@ export const nav = [
 ] as const;
 
 export const orderRules = [
-  "Toate produsele se comandă telefonic sau pe WhatsApp cu 24–48 de ore înainte.",
+  "Comenzile se fac telefonic sau pe WhatsApp: tablete cu 24–48 h înainte, cutii cadou cu minimum 48 h, restul produselor cu 48–72 h.",
   "Degustările pentru evenimente se programează telefonic cu 24 de ore înainte.",
   "Momentan nu livrăm prin curier — comenzile se ridică din atelier, în Caransebeș.",
   "Realizăm și alte produse la cerere și ne adaptăm fiecărui buget.",

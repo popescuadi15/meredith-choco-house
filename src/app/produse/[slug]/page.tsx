@@ -6,7 +6,7 @@ import { Suspense } from "react";
 import AddButton from "@/components/AddButton";
 import ProductCard from "@/components/ProductCard";
 import JsonLd from "@/components/JsonLd";
-import { bySlug, categories, formatPrice, inCategory, products } from "@/lib/products";
+import { bySlug, categories, chocolates, formatPrice, inCategory, prepTime, products, traces } from "@/lib/products";
 import { orderRules, site, waLink } from "@/lib/site";
 import { breadcrumbs, productSchema } from "@/lib/schema";
 import s from "../../inner.module.css";
@@ -78,8 +78,9 @@ async function Product({ params }: { params: PageProps<"/produse/[slug]">["param
           <h1>{p.name}</h1>
           <p className={s.pPrice}>
             {formatPrice(p)}
-            {p.weight && <small> · {p.weight}</small>}
+            {p.weight && !p.variants && <small> · {p.weight}</small>}
           </p>
+          <p className={s.pPrep}>Timp de pregătire: {prepTime[p.category]}</p>
           <p className={s.pDesc}>{p.description}</p>
           {p.contents && (
             <>
@@ -97,17 +98,42 @@ async function Product({ params }: { params: PageProps<"/produse/[slug]">["param
                 Cere o ofertă
               </Link>
             ) : (
-              <AddButton slug={p.slug} />
+              <AddButton slug={p.slug} picker />
             )}
             <a className="btn btn--ghost" href={waLink(`Bună ziua! Sunt interesat(ă) de: ${p.name}.`)} target="_blank" rel="noopener">
               Întreabă pe WhatsApp
             </a>
           </div>
+          <details className={s.allergens}>
+            <summary>Ingrediente & alergeni</summary>
+            <p>
+              <strong>Alergeni specifici acestui produs:</strong> {p.allergens === "—" ? "doar cei din ciocolata aleasă (mai jos)." : p.allergens}
+            </p>
+            {p.category !== "evenimente" && (
+              <ul>
+                {chocolates.map((c) => (
+                  <li key={c.name}>
+                    <strong>{c.name}</strong> — Ingrediente: {c.ingredients} Alergeni: {c.allergens}
+                  </li>
+                ))}
+              </ul>
+            )}
+            <p className={s.traces}>{traces}</p>
+          </details>
           <ul className={s.pRules}>
             {orderRules.slice(0, 3).map((r) => (
               <li key={r}>{r}</li>
             ))}
           </ul>
+          {p.more && (
+            <div className={s.pMore}>
+              {p.more.map((m) => (
+                <div key={m.src} className={s.pMoreItem}>
+                  <Image src={m.src} alt={m.alt} fill sizes="200px" />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </article>
 

@@ -5,7 +5,7 @@ export const faq = [
   },
   {
     q: "Cât de repede pot avea comanda?",
-    a: "Toate produsele se fac la comandă, manual, așa că avem nevoie de 24–48 de ore. Tabletele se pot pregăti în 24–36 de ore. Pentru evenimente, programăm o degustare cu cel puțin 24 de ore înainte.",
+    a: "Toate produsele se fac la comandă, manual. Tabletele sunt gata în 24–48 de ore, cutiile cadou au nevoie de minimum 48 de ore, iar celelalte produse (brăduți, mărturii, evenimente) de 48–72 de ore. Pentru evenimente, programăm o degustare cu cel puțin 24 de ore înainte.",
   },
   {
     q: "Cum comand?",
@@ -17,7 +17,11 @@ export const faq = [
   },
   {
     q: "Ce ciocolată folosiți?",
-    a: "Lucrăm cu ciocolată belgiană Callebaut și italiană Master Martini: albă 28%, cu lapte 33,6%, neagră 54,5% și variante fără zahăr (cu maltitol).",
+    a: "Lucrăm cu ciocolată belgiană premium Callebaut: albă 28%, cu lapte 33,6%, neagră 54,5% și fără zahăr (cu maltitol). Ingredientele și alergenii sunt trecuți pe pagina fiecărui produs.",
+  },
+  {
+    q: "Ce umpluturi aveți?",
+    a: "Avem 10 creme pentru tablete și praline: fistic, caramel, crunchy cocos, nocciola, Biscoff, migdale, ciocolată neagră, căpșună, zmeură și portocală.",
   },
   {
     q: "Pot personaliza produsele?",

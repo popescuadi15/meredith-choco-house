@@ -8,7 +8,7 @@ import s from "../inner.module.css";
 
 export const metadata: Metadata = {
   title: "Contact & comenzi — atelier în Caransebeș",
-  description: "Comandă ciocolată artizanală Meredith: 0728 997 053 (telefon & WhatsApp). Atelier: Strada Pajiștei nr. 14, Caransebeș. Comenzi cu 24–48 h înainte, ridicare din atelier.",
+  description: "Comandă ciocolată artizanală Meredith: 0728 997 053 (telefon & WhatsApp). Atelier: Strada Pajiștei nr. 14, Caransebeș. Comenzi cu 24–72 h înainte, ridicare din atelier.",
   alternates: { canonical: "/contact" },
 };
 
@@ -20,7 +20,7 @@ export default function ContactPage() {
         <h1>
           Hai în <span className="script gold-text">atelier</span>
         </h1>
-        <p>Comenzile se fac telefonic sau pe WhatsApp, cu 24–48 de ore înainte, și se ridică din atelierul nostru din Caransebeș.</p>
+        <p>Comenzile se fac telefonic sau pe WhatsApp, cu 24–72 de ore înainte (în funcție de produs), și se ridică din atelierul nostru din Caransebeș.</p>
       </header>
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
@@ -54,7 +54,7 @@ export default function ContactPage() {
                     {h.days}: {h.time}
                   </p>
                 ))}
-                <p className={s.small}>Comenzi telefonice oricând, cu 24–48 h înainte.</p>
+                <p className={s.small}>Comenzi telefonice oricând: tablete 24–48 h, cutii minimum 48 h, restul 48–72 h.</p>
               </div>
               <div>
                 <h2 className="eyebrow">Social</h2>

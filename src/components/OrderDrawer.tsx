@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { useOrder } from "@/lib/order";
-import { bySlug, formatPrice } from "@/lib/products";
+import { lineKey, useOrder } from "@/lib/order";
+import { bySlug, formatPrice, linePrice } from "@/lib/products";
 import { site, waLink } from "@/lib/site";
 import s from "./OrderDrawer.module.css";
 
@@ -27,7 +27,9 @@ export default function OrderDrawer() {
     const items = lines
       .map((l) => {
         const p = bySlug(l.slug)!;
-        return `• ${l.qty} × ${p.name}${p.price ? ` (${p.price} lei)` : ""}`;
+        const v = p.variants?.find((x) => x.id === l.variant);
+        const price = linePrice(p, l.variant);
+        return `• ${l.qty} × ${p.name}${v ? ` ${v.label}` : ""}${price ? ` (${price} lei)` : ""}`;
       })
       .join("\n");
     return [
@@ -68,23 +70,25 @@ export default function OrderDrawer() {
               {lines.map((l) => {
                 const p = bySlug(l.slug)!;
                 const img = p.cutout ?? p.photo;
+                const key = lineKey(l);
+                const v = p.variants?.find((x) => x.id === l.variant);
                 return (
-                  <li key={l.slug}>
+                  <li key={key}>
                     <div className={s.thumb}>{img ? <Image src={img} alt="" fill sizes="72px" /> : <span className="script">M</span>}</div>
                     <div className={s.info}>
                       <p className={s.name}>{p.name}</p>
-                      <p className={s.price}>{formatPrice(p)}</p>
+                      <p className={s.price}>{v ? `${v.label} · ${v.price} lei` : formatPrice(p)}</p>
                       <div className={s.qty}>
-                        <button onClick={() => setQty(l.slug, l.qty - 1)} aria-label={`Scade cantitatea pentru ${p.name}`}>
+                        <button onClick={() => setQty(key, l.qty - 1)} aria-label={`Scade cantitatea pentru ${p.name}`}>
                           −
                         </button>
                         <span aria-live="polite">{l.qty}</span>
-                        <button onClick={() => setQty(l.slug, l.qty + 1)} aria-label={`Crește cantitatea pentru ${p.name}`}>
+                        <button onClick={() => setQty(key, l.qty + 1)} aria-label={`Crește cantitatea pentru ${p.name}`}>
                           +
                         </button>
                       </div>
                     </div>
-                    <button className={s.remove} onClick={() => remove(l.slug)} aria-label={`Elimină ${p.name}`}>
+                    <button className={s.remove} onClick={() => remove(key)} aria-label={`Elimină ${p.name}`}>
                       Elimină
                     </button>
                   </li>
@@ -115,7 +119,7 @@ export default function OrderDrawer() {
                 </p>
               )}
               <p className={s.note}>
-                Comenzile se fac cu 24–48 h înainte și se ridică din atelier, {site.address.street}, {site.address.city}. Plata la ridicare.
+                Timp de pregătire: tablete 24–48 h, cutii cadou minimum 48 h, restul 48–72 h. Comenzile se ridică din atelier, {site.address.street}, {site.address.city}. Plata la ridicare.
               </p>
               <a className="btn btn--gold" href={waLink(message())} target="_blank" rel="noopener">
                 Trimite comanda pe WhatsApp
