@@ -14,7 +14,7 @@ export default function Story() {
         </h2>
         <blockquote className={`${s.quote} reveal`}>
           <p>
-            Bunica mea cumpăra ciocolată și o ascundea în dulapul din bucătărie, ca de fiecare dată când voiam ceva dulce să am <em>bucuria de a descoperi o surpriză.</em>
+            Bunica mea, Edith, cumpăra ciocolată și o ascundea în dulapul din bucătărie, ca de fiecare dată când voiam ceva dulce să am <em>bucuria de a descoperi o surpriză.</em>
           </p>
           <footer>
             <span className="script gold-text">Monica</span>

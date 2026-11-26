@@ -5,7 +5,7 @@ import s from "../inner.module.css";
 
 export const metadata: Metadata = {
   title: "Povestea Meredith — ciocolată făcută cu mâna, în Caransebeș",
-  description: "Cum a început Meredith Choco House: o bunică, un dulap cu surprize și dragostea pentru ciocolata belgiană Callebaut. Singura ciocolaterie artizanală din județul Caraș-Severin.",
+  description: "Cum a început Meredith Choco House: bunica Edith, un dulap cu surprize și dragostea pentru ciocolata belgiană Callebaut. Singura ciocolaterie artizanală din județul Caraș-Severin.",
   alternates: { canonical: "/povestea" },
 };
 
@@ -21,7 +21,7 @@ export default function StoryPage() {
       <section className={s.prose}>
         <div className={s.proseInner}>
           <p className={s.lede}>
-            Dragostea pentru ciocolata de calitate a pornit din copilărie. Bunica mea cumpăra ciocolată și o ascundea, ca de fiecare dată când voiam ceva dulce să îmi ofere bucuria de a descoperi o surpriză în dulapul ei din bucătărie.
+            Dragostea pentru ciocolata de calitate a pornit din copilărie. Bunica mea, Edith, cumpăra ciocolată și o ascundea, ca de fiecare dată când voiam ceva dulce să îmi ofere bucuria de a descoperi o surpriză în dulapul ei din bucătărie.
           </p>
           <p>
             Așa am descoperit plăcerea de a dărui — și am împletit-o cu dragostea pentru ciocolata belgiană premium Callebaut și ingredientele de calitate.
