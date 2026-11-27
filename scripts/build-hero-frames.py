@@ -14,7 +14,7 @@ XF = 0.25         # crossfade between shots, seconds
 
 # (start, end, focal x 0..1 for the mobile crop, hero stage 0..4)
 SHOTS = [
-    (42.00, 44.50, 0.42, 0),  # Callebaut bag
+    (42.00, 44.50, 0.42, 0),  # Callebaut bag (desktop) — phones use MOBILE_OVERRIDES[0]
     (37.75, 39.20, 0.45, 1),  # callets poured into the melter
     (40.95, 41.95, 0.45, 1),  # callets pile up
     (54.75, 55.95, 0.49, 2),  # chocolate stream
@@ -27,6 +27,10 @@ SHOTS = [
     (83.25, 84.10, 0.42, 4),  # red box with the Meredith logo
 ]
 
+# Phone-only replacements: (start, end, focal x). Stretched to the desktop shot's duration so the
+# stage timings stay identical. Shot 0: the white W2 bag — the whole "CALLEBAUT" label fits in 4:5.
+MOBILE_OVERRIDES = {0: (33.40, 34.80, 0.43)}
+
 SRC_W, SRC_H = 3840, 1634
 M_CROP_W = round(SRC_H * 4 / 5)   # 1307 (mobile, 4:5 — shown in the top part of the phone screen)
 D_CROP_W = round(SRC_H * 1.85)      # 3023 (desktop, 1.85:1 — fits 16:9 and 16:10 screens with little extra crop)
@@ -34,10 +38,18 @@ D_CROP_W = round(SRC_H * 1.85)      # 3023 (desktop, 1.85:1 — fits 16:9 and 16
 def graph(kind):
     parts = []
     for i, (a, b, fx, _) in enumerate(SHOTS):
-        f = f"[0:v]trim={a}:{b},setpts=PTS-STARTPTS,fps=25"
+        dur = b - a
+        slow = 1.0
+        if kind == "m" and i in MOBILE_OVERRIDES:
+            a, b, fx = MOBILE_OVERRIDES[i]
+            slow = dur / (b - a)
+        f = f"[0:v]trim={a}:{b},setpts={slow:.4f}*(PTS-STARTPTS)"
         cw, out_w = (M_CROP_W, 800) if kind == "m" else (D_CROP_W, 1920)
         x = min(max(round(fx * SRC_W - cw / 2), 0), SRC_W - cw)
         f += f",crop={cw}:{SRC_H}:{x}:0,scale={out_w}:-2:flags=lanczos"
+        # Slowed shots get blended in-between frames instead of duplicated ones.
+        f += ",minterpolate=fps=25:mi_mode=blend" if slow > 1 else ",fps=25"
+        f += f",trim=duration={dur:.3f}"
         parts.append(f + f",format=yuv420p[s{i}]")
     prev, off = "s0", SHOTS[0][1] - SHOTS[0][0]
     for i in range(1, len(SHOTS)):
