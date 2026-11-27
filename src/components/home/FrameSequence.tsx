@@ -2,17 +2,18 @@
 
 import { useEffect, useRef } from "react";
 import { preload } from "react-dom";
-import frames from "@/lib/hero-frames.json";
+
+export type FrameManifest = { count: number; stages: number[]; desktop: { w: number; h: number }; mobile: { w: number; h: number } };
 
 /**
- * Scroll-scrubbed atelier footage drawn on a canvas.
+ * Scroll-scrubbed footage drawn on a canvas (frames built by scripts/build-frame-sequences.py).
  * `progress` (0..1, written by the parent from scroll) picks the frame; neighbouring frames are
  * blended for smoothness. To keep it alive when the visitor stops scrolling, the playhead breathes
  * a little around its position, the image slowly zooms and follows the mouse.
  */
 
 const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const src = (set: "d" | "m", i: number) => `${base}/hero/${set}/${String(i + 1).padStart(4, "0")}.webp`;
+const src = (name: string, set: "d" | "m", i: number) => `${base}/${name}/${set}/${String(i + 1).padStart(4, "0")}.webp`;
 
 /** Coarse-to-fine order: every 16th frame first, then 8th, 4th… so scrubbing works early. */
 function loadOrder(n: number) {
@@ -29,11 +30,24 @@ function loadOrder(n: number) {
   return order;
 }
 
-export default function HeroSequence({ progress }: { progress: React.RefObject<number> }) {
+type Props = {
+  progress: React.RefObject<number>;
+  /** Folder under /public and manifest from src/lib/<name>-frames.json */
+  name: string;
+  frames: FrameManifest;
+  /** Above the fold: preload the first frame with high priority and load the rest right away. */
+  priority?: boolean;
+  /** How many frames the playhead drifts around its position at rest. */
+  breathe?: number;
+};
+
+export default function FrameSequence({ progress, name, frames, priority = false, breathe: drift = 1.6 }: Props) {
   const ref = useRef<HTMLCanvasElement>(null);
-  // One preload per screen shape, so phones never fetch the desktop frame (and vice versa).
-  preload(src("m", 0), { as: "image", fetchPriority: "high", media: "(max-aspect-ratio: 4/5)" });
-  preload(src("d", 0), { as: "image", fetchPriority: "high", media: "(min-aspect-ratio: 4/5)" });
+  if (priority) {
+    // One preload per screen shape, so phones never fetch the desktop frame (and vice versa).
+    preload(src(name, "m", 0), { as: "image", fetchPriority: "high", media: "(max-aspect-ratio: 4/5)" });
+    preload(src(name, "d", 0), { as: "image", fetchPriority: "high", media: "(min-aspect-ratio: 4/5)" });
+  }
 
   useEffect(() => {
     const canvas = ref.current!;
@@ -45,11 +59,12 @@ export default function HeroSequence({ progress }: { progress: React.RefObject<n
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let disposed = false;
 
-    // Load progressively, a few at a time.
+    // Load progressively, a few at a time — below the fold only once the section is near.
     const queue = loadOrder(N);
     let inflight = 0;
+    let started = priority;
     const pump = () => {
-      while (!disposed && inflight < 6 && queue.length) {
+      while (started && !disposed && inflight < 6 && queue.length) {
         const i = queue.shift()!;
         const img = new Image();
         img.decoding = "async";
@@ -63,7 +78,7 @@ export default function HeroSequence({ progress }: { progress: React.RefObject<n
           inflight--;
           pump();
         };
-        img.src = src(set, i);
+        img.src = src(name, set, i);
       }
     };
     pump();
@@ -125,7 +140,7 @@ export default function HeroSequence({ progress }: { progress: React.RefObject<n
       mouse.y += (mouse.ty - mouse.y) * 0.05;
 
       // Breathing playhead + slow zoom keep the footage alive at rest.
-      const breathe = reduced ? 0 : Math.sin(t * 0.9) * 1.6;
+      const breathe = reduced ? 0 : Math.sin(t * 0.9) * drift;
       const pos = Math.min(N - 1, Math.max(0, f + breathe));
       // Phones get a gentler zoom: their panel is already a close crop.
       const zoom = portrait ? 1.015 : 1.06;
@@ -148,6 +163,17 @@ export default function HeroSequence({ progress }: { progress: React.RefObject<n
       if (visible && !raf) raf = requestAnimationFrame(frame);
     });
     io.observe(canvas);
+    const near = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting && !started) {
+          started = true;
+          pump();
+          near.disconnect();
+        }
+      },
+      { rootMargin: "150% 0px" },
+    );
+    if (!started) near.observe(canvas);
     const onVis = () => {
       if (!document.hidden && !raf) raf = requestAnimationFrame(frame);
     };
@@ -158,17 +184,18 @@ export default function HeroSequence({ progress }: { progress: React.RefObject<n
       cancelAnimationFrame(raf);
       ro.disconnect();
       io.disconnect();
+      near.disconnect();
       window.removeEventListener("pointermove", onMove);
       document.removeEventListener("visibilitychange", onVis);
     };
-  }, [progress]);
+  }, [progress, name, frames, priority, drift]);
 
   return (
     <>
       {/* First frame as a real image: paints instantly (and without JS) before the canvas takes over. */}
       <picture>
-        <source media="(max-aspect-ratio: 4/5)" srcSet={src("m", 0)} />
-        <img src={src("d", 0)} alt="" />
+        <source media="(max-aspect-ratio: 4/5)" srcSet={src(name, "m", 0)} />
+        <img src={src(name, "d", 0)} alt="" loading={priority ? "eager" : "lazy"} />
       </picture>
       <canvas ref={ref} aria-hidden="true" />
     </>

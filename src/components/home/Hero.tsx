@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import HeroSequence from "./HeroSequence";
+import FrameSequence from "./FrameSequence";
 import frames from "@/lib/hero-frames.json";
 import { ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
 import s from "./Hero.module.css";
@@ -54,7 +54,7 @@ export default function Hero() {
     <section ref={root} className={`${s.hero} ${static_ ? s.static : ""}`} data-header="dark" aria-labelledby="hero-title">
       <div className={s.sticky}>
         <div className={s.canvas}>
-          <HeroSequence progress={progress} />
+          <FrameSequence progress={progress} name="hero" frames={frames} priority />
         </div>
         <div className={s.grain} aria-hidden="true" />
         <div className={s.shade} />
