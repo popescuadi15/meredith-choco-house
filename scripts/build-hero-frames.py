@@ -3,7 +3,7 @@
 
 Usage (from web/):  python3 scripts/build-hero-frames.py "../assets/Clip scurt.mp4"
 
-Writes public/hero/d/0001.webp… (desktop, wide), public/hero/m/0001.webp… (mobile, 9:16,
+Writes public/hero/d/0001.webp… (desktop, wide), public/hero/m/0001.webp… (mobile, 4:5,
 cropped on each shot's subject) and src/lib/hero-frames.json (frame count + stage starts).
 """
 import json, os, shutil, subprocess, sys
@@ -28,14 +28,14 @@ SHOTS = [
 ]
 
 SRC_W, SRC_H = 3840, 1634
-M_CROP_W = round(SRC_H * 9 / 16)  # 919  (mobile, 9:16)
+M_CROP_W = round(SRC_H * 4 / 5)   # 1307 (mobile, 4:5 — shown in the top part of the phone screen)
 D_CROP_W = round(SRC_H * 1.85)      # 3023 (desktop, 1.85:1 — fits 16:9 and 16:10 screens with little extra crop)
 
 def graph(kind):
     parts = []
     for i, (a, b, fx, _) in enumerate(SHOTS):
         f = f"[0:v]trim={a}:{b},setpts=PTS-STARTPTS,fps=25"
-        cw, out_w = (M_CROP_W, 600) if kind == "m" else (D_CROP_W, 1920)
+        cw, out_w = (M_CROP_W, 800) if kind == "m" else (D_CROP_W, 1920)
         x = min(max(round(fx * SRC_W - cw / 2), 0), SRC_W - cw)
         f += f",crop={cw}:{SRC_H}:{x}:0,scale={out_w}:-2:flags=lanczos"
         parts.append(f + f",format=yuv420p[s{i}]")

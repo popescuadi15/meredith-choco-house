@@ -127,7 +127,9 @@ export default function HeroSequence({ progress }: { progress: React.RefObject<n
       // Breathing playhead + slow zoom keep the footage alive at rest.
       const breathe = reduced ? 0 : Math.sin(t * 0.9) * 1.6;
       const pos = Math.min(N - 1, Math.max(0, f + breathe));
-      const scale = reduced ? 1.04 : 1.06 + Math.sin(t * 0.22) * 0.02;
+      // Phones get a gentler zoom: their panel is already a close crop.
+      const zoom = portrait ? 1.015 : 1.06;
+      const scale = reduced ? zoom : zoom + Math.sin(t * 0.22) * (portrait ? 0.012 : 0.02);
 
       const i = Math.floor(pos);
       const a = nearest(i);
