@@ -3,7 +3,7 @@ import Gallery, { type Shot } from "@/components/Gallery";
 
 export const metadata: Metadata = {
   title: "Galerie — creații din ciocolată pictate manual",
-  description: "Fotografii cu tabletele, pralinele, brăduții de Crăciun și mărturiile Meredith Choco House, realizate manual în atelierul din Caransebeș.",
+  description: "Fotografii cu tabletele, pralinele, brăduții de Crăciun și mărturiile Meredith Choco House, realizate manual în laboratorul din Caransebeș.",
   alternates: { canonical: "/galerie" },
 };
 
@@ -33,7 +33,7 @@ export default function GalleryPage() {
       <header className="page-hero">
         <p className="eyebrow">Galerie</p>
         <h1>
-          Din <span className="script gold-text">atelier</span>
+          Din <span className="script gold-text">laborator</span>
         </h1>
         <p>Fiecare bucată de aici a fost pictată, umplută și ambalată de mână.</p>
       </header>

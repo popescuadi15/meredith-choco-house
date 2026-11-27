@@ -14,7 +14,7 @@ export default function Footer() {
 
         <div className={s.cols}>
           <div>
-            <h2 className="eyebrow">Atelier</h2>
+            <h2 className="eyebrow">Laborator</h2>
             <address>
               {site.address.street}
               <br />

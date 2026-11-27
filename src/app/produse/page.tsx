@@ -9,7 +9,7 @@ import s from "../inner.module.css";
 
 export const metadata: Metadata = {
   title: "Colecții — tablete, cutii cadou, Crăciun",
-  description: "Catalogul Meredith Choco House: tablete de ciocolată Callebaut (25 lei), tableta Dubai pictată manual, cutii cadou cu praline (50–200 lei), brăduți și cadouri de Crăciun. Comenzi în Caransebeș, ridicare din atelier.",
+  description: "Catalogul Meredith Choco House: tablete de ciocolată Callebaut (25 lei), tableta Dubai pictată manual, cutii cadou cu praline (50–200 lei), brăduți și cadouri de Crăciun. Comenzi în Caransebeș, ridicare din laborator.",
   alternates: { canonical: "/produse" },
 };
 

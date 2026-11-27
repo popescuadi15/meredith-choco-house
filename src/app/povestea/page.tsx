@@ -27,7 +27,7 @@ export default function StoryPage() {
             Așa am descoperit plăcerea de a dărui — și am împletit-o cu dragostea pentru ciocolata belgiană premium Callebaut și ingredientele de calitate.
           </p>
           <figure className={`${s.figure} reveal`}>
-            <Image src="/images/photos/atelier-callebaut.jpg" alt="Tablete de ciocolată Meredith și saci de ciocolată Callebaut în atelier" fill sizes="(max-width: 900px) 100vw, 900px" />
+            <Image src="/images/photos/atelier-callebaut.jpg" alt="Tablete de ciocolată Meredith și saci de ciocolată Callebaut în laborator" fill sizes="(max-width: 900px) 100vw, 900px" />
           </figure>
           <h2>Totul, de mână</h2>
           <p>
@@ -52,7 +52,7 @@ export default function StoryPage() {
               Descoperă colecțiile
             </Link>
             <Link href="/contact" className="btn btn--ghost">
-              Vino în atelier
+              Vino în laborator
             </Link>
           </div>
         </div>

@@ -30,7 +30,7 @@ export default function Story() {
               Așa am descoperit plăcerea de a dărui — și am împletit-o cu dragostea pentru ciocolata belgiană Callebaut și pentru ingredientele de calitate.
             </p>
             <p>
-              În atelierul nostru totul se face manual, de la colorare până la ambalare. Capacitatea e limitată, dar fiecare produs se realizează la dorința ta: tipul de ciocolată, culoarea, umplutura, ingredientele speciale.
+              În laboratorul nostru totul se face manual, de la colorare până la ambalare. Capacitatea e limitată, dar fiecare produs se realizează la dorința ta: tipul de ciocolată, culoarea, umplutura, ingredientele speciale.
             </p>
             <ul className={s.pillars}>
               <li>

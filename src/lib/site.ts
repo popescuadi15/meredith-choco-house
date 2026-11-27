@@ -16,7 +16,7 @@ export const site = {
     city: "Caransebeș",
     county: "Caraș-Severin",
     country: "RO",
-    label: "Atelier",
+    label: "Laborator",
   },
   hours: [{ days: "Sâmbătă", time: "10:00 – 18:00", schema: { day: "Saturday", opens: "10:00", closes: "18:00" } }],
   social: {
@@ -39,7 +39,7 @@ export const nav = [
 export const orderRules = [
   "Comenzile se fac telefonic sau pe WhatsApp: tablete cu 24–48 h înainte, cutii cadou cu minimum 48 h, restul produselor cu 48–72 h.",
   "Degustările pentru evenimente se programează telefonic cu 24 de ore înainte.",
-  "Momentan nu livrăm prin curier — comenzile se ridică din atelier, în Caransebeș.",
+  "Momentan nu livrăm prin curier — comenzile se ridică din laborator, în Caransebeș.",
   "Realizăm și alte produse la cerere și ne adaptăm fiecărui buget.",
 ];
 

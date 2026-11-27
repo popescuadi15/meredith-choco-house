@@ -7,8 +7,8 @@ import { orderRules, site, waLink } from "@/lib/site";
 import s from "../inner.module.css";
 
 export const metadata: Metadata = {
-  title: "Contact & comenzi — atelier în Caransebeș",
-  description: "Comandă ciocolată artizanală Meredith: 0728 997 053 (telefon & WhatsApp). Atelier: Strada Pajiștei nr. 14, Caransebeș. Comenzi cu 24–72 h înainte, ridicare din atelier.",
+  title: "Contact & comenzi — laborator în Caransebeș",
+  description: "Comandă ciocolată artizanală Meredith: 0728 997 053 (telefon & WhatsApp). Laborator: Strada Pajiștei nr. 14, Caransebeș. Comenzi cu 24–72 h înainte, ridicare din laborator.",
   alternates: { canonical: "/contact" },
 };
 
@@ -18,9 +18,9 @@ export default function ContactPage() {
       <header className="page-hero">
         <p className="eyebrow">Contact</p>
         <h1>
-          Hai în <span className="script gold-text">atelier</span>
+          Hai în <span className="script gold-text">laborator</span>
         </h1>
-        <p>Comenzile se fac telefonic sau pe WhatsApp, cu 24–72 de ore înainte (în funcție de produs), și se ridică din atelierul nostru din Caransebeș.</p>
+        <p>Comenzile se fac telefonic sau pe WhatsApp, cu 24–72 de ore înainte (în funcție de produs), și se ridică din laboratorul nostru din Caransebeș.</p>
       </header>
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
@@ -40,7 +40,7 @@ export default function ContactPage() {
                 <a href={`mailto:${site.email}`}>{site.email}</a>
               </div>
               <div>
-                <h2 className="eyebrow">Atelier</h2>
+                <h2 className="eyebrow">Laborator</h2>
                 <address>
                   {site.address.street}
                   <br />

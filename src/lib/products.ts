@@ -43,7 +43,7 @@ export const prepTime: Record<Category, string> = {
 /** The 10 creams used for tablets and pralines. */
 export const fillings = ["fistic", "caramel", "crunchy cocos", "nocciola", "Biscoff", "migdale", "ciocolată neagră", "căpșună", "zmeură", "portocală"];
 
-/** Callebaut chocolates used in the atelier — ingredients & allergens as supplied by the client. */
+/** Callebaut chocolates used in the laborator — ingredients & allergens as supplied by the client. */
 export const chocolates = [
   {
     name: "Ciocolată neagră Callebaut (54,5% cacao)",
@@ -134,7 +134,7 @@ export const products: Product[] = [
     ],
     short: "Celebra tabletă Dubai, cu kataif și tahini — singura tabletă pictată manual.",
     description:
-      "Cea mai cerută tabletă din atelier: ciocolată belgiană Callebaut umplută cu kataif și tahini, pictată manual, individual. O găsești în trei gramaje — 50 g, 100 g și 200 g.",
+      "Cea mai cerută tabletă din laborator: ciocolată belgiană Callebaut umplută cu kataif și tahini, pictată manual, individual. O găsești în trei gramaje — 50 g, 100 g și 200 g.",
     allergens: "LAPTE, SOIA, GLUTEN (kataif), SUSAN (tahini)",
     alt: "Tabletă de ciocolată Dubai Meredith, pictată manual",
     badge: "Cea mai iubită",
@@ -234,7 +234,7 @@ export const products: Product[] = [
     price: 100,
     weight: "375 g",
     short: "Praline, batoane cu nuci și mini tablete cu zmeură.",
-    description: "Cutia semnătură a atelierului: praline umplute, batoane cu mix de nuci și mini tablete de 10 g cu zmeură liofilizată și fistic.",
+    description: "Cutia semnătură a laboratorului: praline umplute, batoane cu mix de nuci și mini tablete de 10 g cu zmeură liofilizată și fistic.",
     contents: [
       "Praline umplute cu fistic",
       "Praline umplute cu caramel",

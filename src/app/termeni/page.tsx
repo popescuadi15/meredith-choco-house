@@ -13,7 +13,7 @@ export default function Terms() {
       <section className={s.prose}>
         <div className={s.proseInner}>
           <p>
-            Site-ul {site.url.replace("https://", "")} este administrat de {site.legalName}, CUI {site.cui}, cu atelierul în {site.address.street}, {site.address.city}, jud. {site.address.county}.
+            Site-ul {site.url.replace("https://", "")} este administrat de {site.legalName}, CUI {site.cui}, cu laboratorul în {site.address.street}, {site.address.city}, jud. {site.address.county}.
           </p>
           <h2>Comenzi</h2>
           <p>
@@ -22,7 +22,7 @@ export default function Terms() {
           <h2>Prețuri și plată</h2>
           <p>Prețurile sunt exprimate în lei. Pentru evenimente, prețul final se stabilește după degustare, în funcție de cerințe. Plata se face la ridicarea comenzii.</p>
           <h2>Ridicare</h2>
-          <p>Momentan nu livrăm prin curier. Comenzile se ridică din atelier, la data stabilită.</p>
+          <p>Momentan nu livrăm prin curier. Comenzile se ridică din laborator, la data stabilită.</p>
           <h2>Alergeni</h2>
           <p>
             Produsele noastre conțin sau pot conține lapte, soia, gluten, fructe cu coajă lemnoasă (fistic, alune, migdale, macadamia) și arahide. Te rugăm să ne anunți orice alergie înainte de comandă.

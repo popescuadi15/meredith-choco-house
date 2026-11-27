@@ -13,7 +13,7 @@ export const faq = [
   },
   {
     q: "Livrați prin curier?",
-    a: "Momentan nu livrăm prin curier. Comenzile se ridică din atelierul nostru din Caransebeș, Strada Pajiștei nr. 14.",
+    a: "Momentan nu livrăm prin curier. Comenzile se ridică din laboratorul nostru din Caransebeș, Strada Pajiștei nr. 14.",
   },
   {
     q: "Ce ciocolată folosiți?",

@@ -6,7 +6,7 @@ import s from "../inner.module.css";
 
 export const metadata: Metadata = {
   title: "Degustări de praline pentru evenimente",
-  description: "Programează o degustare privată de praline Meredith pentru nunta, botezul sau evenimentul tău. Programare telefonică cu 24 h înainte, în atelierul din Caransebeș.",
+  description: "Programează o degustare privată de praline Meredith pentru nunta, botezul sau evenimentul tău. Programare telefonică cu 24 h înainte, în laboratorul din Caransebeș.",
   alternates: { canonical: "/degustari" },
 };
 

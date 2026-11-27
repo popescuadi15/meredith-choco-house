@@ -119,7 +119,7 @@ export default function OrderDrawer() {
                 </p>
               )}
               <p className={s.note}>
-                Timp de pregătire: tablete 24–48 h, cutii cadou minimum 48 h, restul 48–72 h. Comenzile se ridică din atelier, {site.address.street}, {site.address.city}. Plata la ridicare.
+                Timp de pregătire: tablete 24–48 h, cutii cadou minimum 48 h, restul 48–72 h. Comenzile se ridică din laborator, {site.address.street}, {site.address.city}. Plata la ridicare.
               </p>
               <a className="btn btn--gold" href={waLink(message())} target="_blank" rel="noopener">
                 Trimite comanda pe WhatsApp

@@ -10,7 +10,7 @@ export default function MapEmbed() {
   return (
     <div className={s.map}>
       {on ? (
-        <iframe title="Harta atelierului Meredith Choco House" src={`https://www.google.com/maps?q=${q}&output=embed`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+        <iframe title="Harta laboratorului Meredith Choco House" src={`https://www.google.com/maps?q=${q}&output=embed`} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
       ) : (
         <div className={s.placeholder}>
           <p className="script gold-text">Caransebeș</p>
