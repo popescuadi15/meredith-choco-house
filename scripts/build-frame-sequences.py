@@ -39,12 +39,16 @@ SEQUENCES = {
     "atelier": {
         "shots": [
             (10.00, 12.80, 0.50, 0),    # 07:00 Monica opens the door and walks in
-            (67.75, 69.75, 0.45, 1),    # 10:00 arranging the hand-painted pralines
-            (57.50, 59.10, 0.42, 2),    # 13:00 filling the mould
+            (63.40, 64.90, 0.45, 1),    # 10:00 Monica at work, close-up
+            (71.25, 72.30, 0.42, 1),    #       hands setting the painted pink pieces (side view)
+            (46.70, 47.70, 0.45, 2),    # 13:00 stirring the cream in the red bowl
+            (50.80, 52.20, 0.42, 2),    #       the cream, ready
             (75.50, 77.00, 0.45, 3),    # 16:00 pralines placed one by one in the box
             (79.50, 81.25, 0.50, 3),    #       folding the red gift box
             (111.25, 112.90, 0.50, 4),  # 19:00 boxes ready to be picked up
+            (116.00, 117.40, 0.45, 4),  #       tablets wrapped and waiting
             (0.75, 2.75, 0.45, 5),      # 22:00 outside — "Laborator ciocolată belgiană · Meredith"
+            # Never reuse a moment that appears in the hero.
         ],
         "mobile_overrides": {},
         "stages": 6,

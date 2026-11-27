@@ -11,7 +11,7 @@ const moments = [
   { h: 10, title: "Culori, una câte una.", text: "Pictăm formele cu unt de cacao colorat — manual, fără nimic automatizat." },
   { h: 13, title: "Umplutura.", text: "Fistic, caramel, nocciola, cocos, Biscoff. Fiecare cremă, în pralina ei." },
   { h: 16, title: "Ultimele detalii.", text: "Scoatem din forme, verificăm fiecare bucată și o așezăm în cutie." },
-  { h: 19, title: "Gata de ridicat.", text: "Comenzile tale te așteaptă în atelier, așezate în cutiile lor." },
+  { h: 19, title: "Gata de ridicat.", text: "Comenzile tale te așteaptă în atelier, ambalate cu grijă, în cutiile lor." },
   { h: 22, title: "Atelierul doarme.", text: "Mâine o luăm de la capăt. Tot de la zero, tot de mână." },
 ];
 const clamp = (x: number) => Math.min(1, Math.max(0, x));
