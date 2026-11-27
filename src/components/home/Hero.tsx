@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import ChocolateCanvas from "./ChocolateCanvas";
+import HeroSequence from "./HeroSequence";
+import frames from "@/lib/hero-frames.json";
 import { ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
 import s from "./Hero.module.css";
 
@@ -26,7 +26,7 @@ export default function Hero() {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time capability check
       setStatic(true);
       setActive(stages.length - 1);
-      progress.current = 0.5;
+      progress.current = 1;
       return;
     }
     const el = root.current!;
@@ -36,10 +36,15 @@ export default function Hero() {
       end: "bottom bottom",
       onUpdate(self) {
         const p = self.progress;
-        progress.current = p;
+        // The footage ends a little before the section does, so the last stage can hold.
+        const seq = Math.min(1, p / 0.9);
+        progress.current = seq;
         el.style.setProperty("--p", p.toFixed(4));
-        el.style.setProperty("--reveal", Math.min(1, Math.max(0, (p - 0.8) / 0.14)).toFixed(4));
-        setActive(Math.min(stages.length - 1, Math.floor(p * stages.length * 0.999)));
+        let i = 0;
+        frames.stages.forEach((start, k) => {
+          if (seq >= start - 0.01) i = k;
+        });
+        setActive(i);
       },
     });
     return () => st.kill();
@@ -49,11 +54,9 @@ export default function Hero() {
     <section ref={root} className={`${s.hero} ${static_ ? s.static : ""}`} data-header="dark" aria-labelledby="hero-title">
       <div className={s.sticky}>
         <div className={s.canvas}>
-          <ChocolateCanvas progress={progress} />
+          <HeroSequence progress={progress} />
         </div>
-        <div className={s.photo} aria-hidden={active < stages.length - 1}>
-          <Image src="/images/photos/atelier-callebaut.jpg" alt="Tablete Meredith pictate manual, lângă sacii de ciocolată belgiană Callebaut din atelier" fill sizes="100vw" quality={75} />
-        </div>
+        <div className={s.grain} aria-hidden="true" />
         <div className={s.shade} />
 
         <div className={s.top}>
