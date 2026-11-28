@@ -128,7 +128,7 @@ async function Product({ params }: { params: PageProps<"/produse/[slug]">["param
           {p.more && (
             <div className={s.pMore}>
               {p.more.map((m) => (
-                <div key={m.src} className={s.pMoreItem}>
+                <div key={m.src} className={`${s.pMoreItem} ${m.src.includes("/cut/") ? s.pMoreCut : ""}`}>
                   <Image src={m.src} alt={m.alt} fill sizes="200px" />
                 </div>
               ))}

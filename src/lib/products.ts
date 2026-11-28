@@ -106,7 +106,7 @@ const tablet100 = (p: Omit<Product, "category" | "price" | "weight" | "descripti
 });
 
 /** 80 g filled tablet ("I Love You" mould). */
-const tablet80 = (cream: string, p: Omit<Product, "category" | "price" | "weight" | "description" | "name" | "alt" | "photo" | "cutout">): Product => ({
+const tablet80 = (cream: string, p: Omit<Product, "category" | "price" | "weight" | "description" | "name" | "alt">): Product => ({
   category: "tablete",
   price: 25,
   weight: "80 g",
@@ -126,7 +126,7 @@ export const products: Product[] = [
     category: "tablete",
     price: 15,
     priceFrom: true,
-    weight: "50 g · 100 g · 200 g",
+    weight: "50–200 g",
     variants: [
       { id: "50g", label: "50 g", price: 15 },
       { id: "100g", label: "100 g", price: 30 },
@@ -136,6 +136,14 @@ export const products: Product[] = [
     description:
       "Cea mai cerută tabletă din laborator: ciocolată belgiană Callebaut umplută cu kataif și tahini, pictată manual, individual. O găsești în trei gramaje — 50 g, 100 g și 200 g.",
     allergens: "LAPTE, SOIA, GLUTEN (kataif), SUSAN (tahini)",
+    cutout: "/images/cut/dubai-100.webp",
+    photo: "/images/photos/tablete-dubai-pictate.jpg",
+    more: [
+      { src: "/images/cut/dubai-200.webp", alt: "Tableta Dubai de 200 g, pictată manual" },
+      { src: "/images/photos/tablete-dubai-pictate.jpg", alt: "Trei tablete Dubai pictate manual cu auriu" },
+    ],
+    word: "DUBAI",
+    tone: { bg: "#9f8a63", word: "#efe3c8", ink: "#1f1609" },
     alt: "Tabletă de ciocolată Dubai Meredith, pictată manual",
     badge: "Cea mai iubită",
     featured: true,
@@ -169,14 +177,20 @@ export const products: Product[] = [
     name: "Ciocolată cu biscuiți Oreo",
     short: "Biscuiți Oreo, în ciocolată belgiană.",
     allergens: "GLUTEN (biscuiți), SOIA",
-    alt: "Tabletă de ciocolată cu biscuiți Oreo",
+    cutout: "/images/cut/tableta-oreo.webp",
+    alt: "Tablete de ciocolată cu biscuiți Oreo",
+    word: "OREO",
+    tone: { bg: "#a9a39a", word: "#efece6", ink: "#1a1714" },
   }),
   tablet100({
     slug: "tableta-zmeura-liofilizata",
     name: "Ciocolată cu zmeură liofilizată",
     short: "Zmeură liofilizată, acidulată, pe ciocolată cu lapte.",
     allergens: "—",
-    alt: "Tabletă de ciocolată cu zmeură liofilizată",
+    cutout: "/images/cut/tableta-zmeura-noua.webp",
+    word: "ZMEURĂ",
+    tone: { bg: "#c99f9a", word: "#f7e7e2", ink: "#2b1414" },
+    alt: "Tablete de ciocolată cu lapte cu zmeură liofilizată",
     badge: "Preferata clienților",
   }),
   tablet100({
@@ -188,6 +202,8 @@ export const products: Product[] = [
   }),
   tablet80("crunchy cocos", {
     slug: "tableta-crema-crunchy-cocos",
+    cutout: "/images/cut/tableta-crunchy-cocos.webp",
+    photo: "/images/photos/tableta-alba.jpg",
     word: "COCOS",
     short: "Tabletă umplută cu cremă crunchy de cocos.",
     allergens: "—",
@@ -222,9 +238,9 @@ export const products: Product[] = [
       "Douăsprezece praline pictate manual, individual. Alegi una sau două dintre cele patru creme — fistic, caramel, nocciola sau cocos. Le putem face și în alte culori și din orice tip de ciocolată; în acest caz prețul poate varia ușor.",
     contents: ["Pralină cu cremă de fistic", "Pralină cu cremă caramel", "Pralină cu cremă nocciola", "Pralină cu cremă de cocos"],
     allergens: "FISTIC, ALUNE DE PĂDURE (în funcție de cremele alese)",
-    cutout: "/images/cut/cutii-praline.webp",
-    photo: "/images/photos/cutii-praline.jpg",
-    alt: "Cutii albe Meredith Selection cu câte 12 praline pictate manual",
+    cutout: "/images/cut/cutii-selection-4.webp",
+    more: [{ src: "/images/photos/cutii-praline.jpg", alt: "Trei cutii Meredith Selection" }],
+    alt: "Patru cutii Meredith Selection cu câte 12 praline pictate manual, în arome diferite",
     featured: true,
   },
   {
@@ -268,9 +284,8 @@ export const products: Product[] = [
       "Batoane cu merișoare",
     ],
     allergens: "FISTIC, ALUNE DE PĂDURE, NUCI și alte FRUCTE CU COAJĂ LEMNOASĂ",
-    photo: "/images/photos/marturii-mini-tablete.jpg",
-    cutout: "/images/cut/mini-tablete.webp",
-    alt: "Mini tablete de ciocolată colorate din cutia Meredith Gold",
+    cutout: "/images/cut/cutie-gold.webp",
+    alt: "Cutia Meredith Gold cu praline pictate manual și mini tablete",
     badge: "Cadoul perfect",
   },
   {
@@ -317,6 +332,11 @@ export const products: Product[] = [
     allergens: "În funcție de variantă: ALUNE DE PĂDURE, FISTIC, ARAHIDE",
     cutout: "/images/cut/bradut-lapte.webp",
     photo: "/images/photos/bradut-lapte.jpg",
+    more: [
+      { src: "/images/cut/bradut-dark.webp", alt: "Brăduț integral din ciocolată dark 54,5%, pictat cu auriu" },
+      { src: "/images/photos/bradut-verde.jpg", alt: "Brăduț de ciocolată verde pictat manual" },
+      { src: "/images/photos/bradut-alb.jpg", alt: "Brăduț de ciocolată albă pictat colorat" },
+    ],
     alt: "Brăduț din ciocolată cu lapte pictat manual cu auriu",
     featured: true,
   },
@@ -384,8 +404,13 @@ export const products: Product[] = [
     description:
       "Machete, fructe trase în ciocolată și praline în culorile și umpluturile alese pentru tematica evenimentului tău. Stabilim împreună, după o degustare de praline, meniul și prețul final.",
     allergens: "În funcție de meniul ales — îți comunicăm lista exactă la degustare",
-    photo: "/images/photos/choco-bar-atelier.jpg",
-    alt: "Praline colorate și cutii Meredith pregătite pentru un Choco Bar",
+    photo: "/images/photos/candybar-vertical.jpg",
+    more: [
+      { src: "/images/photos/candybar-randuri.jpg", alt: "Rânduri de praline și batoane pe Deluxe Meredith Choco Bar" },
+      { src: "/images/photos/candybar-ciocolata.jpg", alt: "Praline de ciocolată pe treptele aurii ale Choco Bar-ului" },
+      { src: "/images/photos/choco-bar-atelier.jpg", alt: "Praline colorate pregătite în laborator pentru un Choco Bar" },
+    ],
+    alt: "Deluxe Meredith Choco Bar la un eveniment: trepte aurii cu praline, batoane și bomboane de ciocolată",
     featured: true,
   },
 ];

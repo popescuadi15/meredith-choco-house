@@ -22,24 +22,25 @@
   background: #1a110c;
   container-type: size;
 }
-/* A box with the photo's own aspect ratio that covers the viewport — so the night lights,
-   drawn in photo coordinates, stay exactly on the arch, the lantern and the door. */
-.frame {
-  --ar: 1.8504; /* 2400 / 1297 */
+/* Three aligned photographs of the laboratory, cross-faded by the hour */
+.photo picture {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: max(100cqw, calc(100cqh * var(--ar)));
-  aspect-ratio: var(--ar);
-  transform: translate(-50%, -50%) scale(calc(1.02 + var(--sun) * 0.0006));
+  inset: 0;
+  transform: scale(calc(1 + var(--sun) * 0.0003));
 }
-.frame img {
+.photo img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(calc(1.02 - var(--night) * 0.5)) saturate(calc(1 - var(--night) * 0.35)) contrast(calc(1 + var(--night) * 0.1));
+  object-position: 50% 35%;
+}
+.dusk {
+  opacity: var(--dusk, 0);
+}
+.dark {
+  opacity: var(--dark, 0);
 }
 .layer {
   position: absolute;
@@ -56,50 +57,8 @@
   mix-blend-mode: soft-light;
   opacity: var(--golden);
 }
-.night {
-  background: linear-gradient(180deg, #0b1a33 0%, #10233f 60%, #1b1410 100%);
-  mix-blend-mode: multiply;
-  opacity: calc(var(--night) * 0.8);
-}
 
-/* Night lights: lantern, door glass, string lights under the arch */
-.lightsDesktop,
-.lightsMobile {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  opacity: var(--lights, 0);
-}
-.lightsMobile {
-  display: none;
-}
-.lit {
-  animation: flicker 5s ease-in-out infinite;
-}
-.bulb {
-  animation: twinkle 2.6s ease-in-out infinite;
-}
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  45% {
-    opacity: 0.35;
-  }
-}
-@keyframes flicker {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.86;
-  }
-}
+
 .shade {
   background:
     linear-gradient(90deg, rgba(18, 10, 6, 0.75) 0%, rgba(18, 10, 6, 0.2) 45%, transparent 70%),
@@ -224,15 +183,6 @@
     height: 72svh;
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, rgba(0, 0, 0, 0.35) 82%, transparent 100%);
     mask-image: linear-gradient(180deg, #000 0%, #000 55%, rgba(0, 0, 0, 0.35) 82%, transparent 100%);
-  }
-  .frame {
-    --ar: 0.8;
-  }
-  .lightsDesktop {
-    display: none;
-  }
-  .lightsMobile {
-    display: block;
   }
   .shade {
     background: linear-gradient(180deg, rgba(18, 10, 6, 0.55) 0%, rgba(18, 10, 6, 0) 22%);

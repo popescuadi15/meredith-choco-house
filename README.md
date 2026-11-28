@@ -32,3 +32,6 @@ Every push to `main` runs `.github/workflows/deploy-pages.yml`: lint + typecheck
 (`PAGES_BASE_PATH` = repo path, `SITE_PREVIEW=1`) uploaded to GitHub Pages. The preview is `noindex` and its robots.txt
 disallows crawling, so it never competes with meredithchoco.ro in Google.
 One-time setup: repo **Settings → Pages → Source: GitHub Actions**.
+
+Transparent product PNGs from the client (with a light fringe on the edge):
+`node scripts/clean-cutouts.mjs` (list of files at the bottom of the script).

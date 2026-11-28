@@ -26,7 +26,7 @@ export default function EventsPage() {
         <div className="container">
           <div className={s.featureRow}>
             <div className={`${s.featureImg} reveal`}>
-              <Image src="/images/photos/marturii-mini-tablete.jpg" alt="Mărturii de nuntă — mini tablete de ciocolată în culori pastel" fill sizes="(max-width: 900px) 100vw, 50vw" />
+              <Image src="/images/photos/eveniment-cutii-praline.jpg" alt="Mărturii și praline în cutii, pregătite pentru un eveniment" fill sizes="(max-width: 900px) 100vw, 50vw" />
             </div>
             <div className={s.featureText}>
               <p className="eyebrow">01 — Mărturii</p>
@@ -40,7 +40,7 @@ export default function EventsPage() {
           </div>
           <div className={`${s.featureRow} ${s.reverse}`}>
             <div className={`${s.featureImg} reveal`}>
-              <Image src="/images/photos/choco-bar-atelier.jpg" alt="Praline colorate pregătite pentru Deluxe Meredith Choco Bar" fill sizes="(max-width: 900px) 100vw, 50vw" />
+              <Image src="/images/photos/candybar-randuri.jpg" alt="Deluxe Meredith Choco Bar: rânduri de praline, batoane și bomboane pe trepte aurii" fill sizes="(max-width: 900px) 100vw, 50vw" />
             </div>
             <div className={s.featureText}>
               <p className="eyebrow">02 — Deluxe Meredith Choco Bar</p>

@@ -553,3 +553,10 @@
   line-height: 1.5;
   color: var(--ink);
 }
+.pMoreCut {
+  background: radial-gradient(70% 70% at 50% 45%, #ffffff, var(--paper));
+}
+.pMoreCut img {
+  object-fit: contain !important;
+  padding: 8%;
+}

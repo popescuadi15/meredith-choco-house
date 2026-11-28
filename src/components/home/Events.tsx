@@ -8,7 +8,7 @@ export default function Events() {
       <div className="container">
         <div className={s.events}>
           <div className={`${s.eventsImg} reveal`}>
-            <Image src="/images/photos/choco-bar-atelier.jpg" alt="Praline și cutii pregătite pentru un Deluxe Meredith Choco Bar" fill sizes="(max-width: 900px) 100vw, 50vw" />
+            <Image src="/images/photos/candybar-vertical.jpg" alt="Deluxe Meredith Choco Bar la un eveniment: trepte aurii cu praline și batoane de ciocolată" fill sizes="(max-width: 900px) 100vw, 50vw" />
           </div>
           <div className={s.eventsCopy}>
             <p className="eyebrow">06 — Evenimente private</p>

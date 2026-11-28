@@ -8,6 +8,15 @@ export const metadata: Metadata = {
 };
 
 const shots: Shot[] = [
+  { src: "/images/photos/candybar-vertical.jpg", alt: "Deluxe Meredith Choco Bar la un eveniment", w: 1023, h: 1537 },
+  { src: "/images/photos/laborator-amurg.jpg", alt: "Laboratorul Meredith din Caransebeș, la lăsarea serii", w: 2400, h: 1500 },
+  { src: "/images/photos/candybar-ciocolata.jpg", alt: "Praline de ciocolată pe treptele aurii ale Choco Bar-ului", w: 1600, h: 1064 },
+  { src: "/images/photos/tablete-dubai-pictate.jpg", alt: "Tablete Dubai pictate manual cu auriu", w: 1200, h: 1600 },
+  { src: "/images/photos/eveniment-cutii-praline.jpg", alt: "Cutii cu praline pregătite pentru un eveniment", w: 1200, h: 1600 },
+  { src: "/images/photos/candybar-randuri.jpg", alt: "Rânduri de praline și batoane pe Choco Bar", w: 1600, h: 1064 },
+  { src: "/images/photos/cutie-tableta-praline.jpg", alt: "Cutie cadou cu tabletă și praline", w: 899, h: 1599 },
+  { src: "/images/photos/candybar-batoane.jpg", alt: "Batoane și praline colorate la un eveniment", w: 1600, h: 1064 },
+  { src: "/images/photos/laborator-noapte.jpg", alt: "Laboratorul Meredith seara, cu luminițele aprinse", w: 2400, h: 1500 },
   { src: "/images/photos/atelier-callebaut.jpg", alt: "Tablete pictate cu auriu și ciocolata Callebaut", w: 1362, h: 1761 },
   { src: "/images/photos/cutii-praline.jpg", alt: "Cutii Meredith Selection cu 12 praline pictate", w: 2400, h: 1635 },
   { src: "/images/photos/bradut-alb-globuri.jpg", alt: "Brăduț de ciocolată albă cu globuri", w: 2400, h: 1762 },

@@ -83,3 +83,4 @@ for (const [file, size] of [["icon.png", 512], ["apple-icon.png", 180]]) {
     .composite([{ input: inner, gravity: "center" }]).png().toFile(path.resolve("src/app", file));
 }
 console.log("done");
+
