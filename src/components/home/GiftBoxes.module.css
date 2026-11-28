@@ -1,0 +1,377 @@
+/* "Teancul de cadouri" — JS sets each card's transform, --fan (0→1) and data-fan */
+.section {
+  --fan: 0;
+  position: relative;
+  height: 440vh;
+  background:
+    radial-gradient(55% 60% at 68% 55%, #ffffff 0%, transparent 70%),
+    var(--paper);
+}
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(320px, 0.85fr) 1.15fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+  padding: var(--header-h) var(--gutter) 1.5rem calc(var(--gutter) + 2vw);
+}
+
+/* ——— left: the box in hand ——— */
+.info {
+  position: relative;
+  z-index: 40;
+  max-width: 440px;
+  opacity: calc(1 - var(--fan) * 1.6);
+  transform: translateX(calc(var(--fan) * -40px));
+}
+.section[data-fan="1"] .info {
+  visibility: hidden;
+}
+.title {
+  margin-top: 0.8rem;
+  font-size: clamp(2rem, 3.4vw, 3.2rem);
+  font-weight: 300;
+  line-height: 1.02;
+}
+.title em {
+  display: block;
+  color: var(--gold-deep);
+}
+.detail {
+  margin-top: clamp(1.4rem, 3.5vh, 2.4rem);
+  animation: detailIn 0.6s var(--ease);
+}
+@keyframes detailIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+.kicker {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+.name {
+  margin-top: 0.4rem;
+  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+  font-weight: 400;
+}
+.short {
+  margin-top: 0.4rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+.contents {
+  list-style: none;
+  padding: 0;
+  margin: 0.9rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+.contents li {
+  font-size: 0.72rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--gold-line);
+  border-radius: 999px;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.55);
+}
+.contents .moreItems {
+  border-style: dashed;
+  color: var(--gold-deep);
+}
+.meter {
+  margin-top: 1.4rem;
+  height: 3px;
+  background: var(--gold-line);
+  position: relative;
+}
+.meter span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--gold-grad);
+  transition: width 0.9s var(--ease);
+}
+.meterLabel {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+.meterLabel span {
+  font-weight: 700;
+  color: var(--ink);
+}
+.buy {
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+}
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-family: var(--serif);
+}
+.lei {
+  font-size: 1.4rem;
+  color: var(--ink-soft);
+}
+/* odometer: each digit is a 0–9 strip that rolls into place */
+.odo {
+  display: inline-flex;
+  font-size: clamp(3rem, 5vw, 4.4rem);
+  line-height: 1;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+.odoCol {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+  width: 0.56em;
+  transition: width 0.6s var(--ease);
+}
+.odoCol[data-lead="true"] {
+  width: 0;
+}
+.odoStrip {
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.9s cubic-bezier(0.65, 0, 0.2, 1);
+}
+.odoStrip span {
+  height: 1em;
+  text-align: center;
+}
+.tabs {
+  margin-top: 1.4rem;
+  display: flex;
+  gap: 0.4rem;
+}
+.tabs button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-line);
+  background: transparent;
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  transition:
+    background 0.4s var(--ease),
+    color 0.4s var(--ease),
+    border-color 0.4s var(--ease);
+}
+.tabs .tabOn {
+  background: var(--cocoa);
+  border-color: var(--cocoa);
+  color: var(--ivory);
+}
+
+/* ——— right: the deck ——— */
+.deckWrap {
+  display: grid;
+  place-items: center;
+  height: 100%;
+}
+.deck {
+  position: relative;
+  width: min(30vw, 400px, 52svh);
+  aspect-ratio: 4 / 5;
+  will-change: translate;
+}
+.card {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  background: linear-gradient(160deg, #ffffff 0%, #faf6ef 60%, #f2eadc 100%);
+  border-radius: 10px;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 30px 60px -28px rgba(60, 40, 20, 0.45),
+    0 6px 14px -6px rgba(60, 40, 20, 0.18);
+  transform-origin: 50% 80%;
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+/* fine gold frame, like a printed card */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border: 1px solid rgba(176, 138, 80, 0.45);
+  border-radius: 6px;
+  pointer-events: none;
+  z-index: 2;
+}
+/* cards lower in the deck sit in its shadow */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(40, 25, 12, var(--shade, 0));
+  pointer-events: none;
+  z-index: 3;
+}
+.cardNo {
+  position: absolute;
+  top: 22px;
+  left: 24px;
+  z-index: 2;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--gold-deep);
+}
+.cardImg {
+  position: relative;
+  margin: 26px 26px 0;
+}
+.cardImg img {
+  object-fit: contain;
+}
+.cut img {
+  padding: 6%;
+  filter: drop-shadow(0 18px 18px rgba(60, 40, 20, 0.25));
+}
+.photo {
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 54px;
+}
+.photo img {
+  object-fit: cover;
+}
+.cardFoot {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.9rem 28px 24px;
+}
+.cardFoot strong {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+.cardFoot span {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+/* ——— finale ——— */
+.finale {
+  position: absolute;
+  z-index: 50;
+  left: var(--gutter);
+  right: var(--gutter);
+  bottom: clamp(1.5rem, 7vh, 4.5rem);
+  display: grid;
+  justify-items: center;
+  gap: 1.2rem;
+  text-align: center;
+  opacity: var(--fan);
+  transform: translateY(calc((1 - var(--fan)) * 24px));
+  visibility: hidden;
+}
+.section[data-fan="1"] .finale {
+  visibility: visible;
+}
+.section[data-fan="1"] .card {
+  cursor: pointer;
+}
+.finaleTitle {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
+  line-height: 1.1;
+}
+.finaleTitle em {
+  color: var(--gold-deep);
+}
+
+@media (max-width: 900px) {
+  .section {
+    height: 400vh;
+  }
+  .sticky {
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(0, 1fr) auto;
+    align-items: stretch;
+    gap: 0.6rem;
+    padding: calc(var(--header-h) + 0.5rem) var(--gutter) 1.2rem;
+  }
+  .deckWrap {
+    grid-row: 1;
+  }
+  .deck {
+    width: min(74vw, 48svh);
+  }
+  .info {
+    grid-row: 2;
+    max-width: none;
+  }
+  .info > :global(.eyebrow),
+  .title,
+  .contents,
+  .meterLabel,
+  .short {
+    display: none;
+  }
+  .detail {
+    margin-top: 0;
+  }
+  .meter {
+    margin-top: 0.8rem;
+  }
+  .buy {
+    margin-top: 0.7rem;
+    justify-content: space-between;
+    padding-right: 64px;
+  }
+  .odo {
+    font-size: 2.8rem;
+  }
+  .tabs {
+    position: absolute;
+    top: -3.2rem;
+    right: 0;
+    margin: 0;
+  }
+  .tabs button {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+  }
+  .cardFoot strong {
+    font-size: 1.15rem;
+  }
+  .finale {
+    bottom: 5.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    height: auto;
+  }
+  .sticky {
+    position: relative;
+  }
+}
