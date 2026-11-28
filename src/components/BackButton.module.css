@@ -25,16 +25,24 @@
     color 0.3s var(--ease),
     border-color 0.3s var(--ease);
 }
-.back:hover {
-  background: var(--cocoa);
-  border-color: var(--cocoa);
-  color: var(--ivory);
+@media (hover: hover) {
+  .back:hover {
+    background: var(--cocoa);
+    border-color: var(--cocoa);
+    color: var(--ivory);
+  }
 }
 .back svg {
   transition: transform 0.3s var(--ease);
 }
-.back:hover svg {
-  transform: translateX(-3px);
+@media (hover: hover) {
+  .back:hover svg {
+    transform: translateX(-3px);
+  }
+}
+.back:active {
+  background: var(--cocoa);
+  color: var(--ivory);
 }
 @media (max-width: 760px) {
   .back span {

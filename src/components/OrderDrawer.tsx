@@ -15,6 +15,14 @@ export default function OrderDrawer() {
   const [notes, setNotes] = useState("");
   const panel = useRef<HTMLDivElement>(null);
 
+  // While the basket is open the page behind stays put; the panel scrolls on its own.
+  useEffect(() => {
+    const lenis = (window as unknown as { __lenis?: { stop(): void; start(): void } }).__lenis;
+    if (open) lenis?.stop();
+    else lenis?.start();
+    document.documentElement.style.overflow = open ? "hidden" : "";
+  }, [open]);
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
@@ -47,7 +55,7 @@ export default function OrderDrawer() {
   return (
     <div className={`${s.root} ${open ? s.open : ""}`} aria-hidden={!open} inert={!open}>
       <button className={s.scrim} onClick={() => setOpen(false)} aria-label="Închide" tabIndex={-1} />
-      <div className={s.panel} role="dialog" aria-modal="true" aria-labelledby="order-title" ref={panel} tabIndex={-1}>
+      <div className={s.panel} role="dialog" aria-modal="true" aria-labelledby="order-title" ref={panel} tabIndex={-1} data-lenis-prevent>
         <div className={s.head}>
           <h2 id="order-title">
             Comanda <span className="script gold-text">ta</span>

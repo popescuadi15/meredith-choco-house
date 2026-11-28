@@ -144,6 +144,18 @@
 .light {
   color: var(--ink);
 }
+.dark.scrolled {
+  background: linear-gradient(180deg, rgba(20, 12, 8, 0.62), rgba(20, 12, 8, 0.42));
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  border-bottom-color: rgba(217, 192, 143, 0.18);
+}
+.clear.scrolled {
+  background: rgba(251, 248, 243, 0.28);
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  border-bottom-color: rgba(43, 26, 16, 0.12);
+}
 .light.scrolled {
   background: rgba(251, 248, 243, 0.82);
   backdrop-filter: blur(14px) saturate(1.2);

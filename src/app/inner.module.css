@@ -99,6 +99,7 @@
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   min-height: 100vh;
+  padding-top: var(--header-h);
 }
 .pMedia {
   position: relative;
@@ -109,12 +110,12 @@
 .pPhoto,
 .pMono {
   position: sticky;
-  top: 0;
-  height: 100vh;
+  top: var(--header-h);
+  height: calc(100svh - var(--header-h));
 }
 .pCut img {
   object-fit: contain;
-  padding: calc(var(--header-h) + 3rem) 10% 4rem;
+  padding: 3.5rem 10% 4rem;
   filter: drop-shadow(0 40px 40px rgba(60, 40, 20, 0.25));
 }
 .pPhoto img {
@@ -143,7 +144,7 @@
   object-fit: cover;
 }
 .pInfo {
-  padding: calc(var(--header-h) + 3.5rem) var(--gutter) 4rem;
+  padding: 3.5rem var(--gutter) 4rem;
   max-width: 620px;
 }
 .crumbs {
