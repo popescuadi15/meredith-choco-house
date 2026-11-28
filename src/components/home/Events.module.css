@@ -1,0 +1,305 @@
+/* "Invitația" — JS positions the envelope, card and polaroids; sets --intro, --reveal, data-open */
+.section {
+  --intro: 1;
+  --reveal: 0;
+  position: relative;
+  height: 520vh;
+  background: #0c1119;
+  color: var(--ivory);
+}
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
+  overflow: hidden;
+  /* midnight table, the blue of the Choco Bar photos, with a warm pool of light in the middle */
+  background:
+    radial-gradient(45% 40% at 50% 55%, rgba(217, 170, 100, 0.16), transparent 70%),
+    radial-gradient(120% 90% at 50% 30%, #1c2a3e 0%, #111a27 45%, #090d14 100%);
+}
+.sticky > * {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
+/* act 1 title */
+.intro {
+  top: calc(var(--header-h) + clamp(1rem, 6vh, 4rem));
+  transform: translateX(-50%);
+  width: min(90vw, 760px);
+  text-align: center;
+  opacity: var(--intro);
+  pointer-events: none;
+}
+.intro :global(.eyebrow) {
+  color: var(--gold-soft);
+}
+.introTitle {
+  margin-top: 0.8rem;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 1.05;
+}
+.introTitle em {
+  color: var(--gold-soft);
+}
+
+/* ——— envelope ——— */
+.env {
+  z-index: 3;
+  perspective: 1200px;
+  filter: drop-shadow(0 40px 50px rgba(0, 0, 0, 0.55));
+  will-change: transform, opacity;
+}
+.envBack,
+.envFront,
+.flap,
+.flapFace {
+  position: absolute;
+  inset: 0;
+}
+.envBack {
+  border-radius: 6px;
+  background:
+    /* gold-patterned liner showing inside */
+    repeating-linear-gradient(45deg, rgba(176, 138, 80, 0.22) 0 6px, transparent 6px 12px),
+    linear-gradient(180deg, #e9dcc4, #d9c7a6);
+  z-index: 1;
+}
+.envFront {
+  z-index: 3;
+  border-radius: 0 0 6px 6px;
+  background: linear-gradient(165deg, #fbf6ec 0%, #f1e6d2 100%);
+  clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%);
+  box-shadow: inset 0 -1px 0 rgba(176, 138, 80, 0.4);
+}
+.envFront::after {
+  /* the side folds */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top right, transparent 49.6%, rgba(150, 115, 60, 0.18) 50%, transparent 50.6%),
+    linear-gradient(to top left, transparent 49.6%, rgba(150, 115, 60, 0.18) 50%, transparent 50.6%);
+}
+.flap {
+  z-index: 4;
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+  height: 56%;
+}
+.flapFace {
+  background: linear-gradient(180deg, #f6eddc 0%, #ead9bb 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  backface-visibility: visible;
+}
+.seal {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 54%;
+  width: 18%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 35% 30%, #a3343a, #6d1a20 60%, #4c1015);
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 4px rgba(0, 0, 0, 0.12),
+    inset 0 2px 3px rgba(255, 255, 255, 0.18);
+  color: #e8c98e;
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+}
+
+/* ——— the invitation card ——— */
+.card {
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 6px;
+  color: var(--ink);
+  background:
+    radial-gradient(120% 80% at 50% 0%, #fffdf8 0%, #fbf6ec 60%, #f3e9d6 100%);
+  box-shadow:
+    0 50px 90px -30px rgba(0, 0, 0, 0.7),
+    0 10px 24px -10px rgba(0, 0, 0, 0.4);
+  transform-origin: 50% 50%;
+  will-change: transform, height;
+}
+.card::before {
+  /* gold deckle frame */
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(176, 138, 80, 0.55);
+  outline: 1px solid rgba(176, 138, 80, 0.25);
+  outline-offset: 4px;
+  border-radius: 3px;
+  pointer-events: none;
+  z-index: 2;
+}
+.front {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  opacity: calc(1 - var(--reveal) * 2);
+}
+.mono {
+  font-size: 5rem;
+  line-height: 0.8;
+  color: var(--gold);
+}
+.invited {
+  margin-top: 0.6rem;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--ink);
+}
+.invitedSub {
+  margin-top: 0.6rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+.content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding: clamp(2.2rem, 4vw, 3rem) clamp(1.6rem, 3.4vw, 2.8rem);
+  text-align: center;
+  opacity: var(--reveal);
+  transform: translateY(calc((1 - var(--reveal)) * 14px));
+}
+.section[data-open="0"] .content {
+  visibility: hidden;
+}
+.title {
+  margin-top: 0.7rem;
+  font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+  font-weight: 300;
+  line-height: 1.02;
+}
+.title em {
+  color: var(--gold-deep);
+}
+.lead {
+  margin: 1rem auto 0;
+  max-width: 420px;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+.facts {
+  margin: 1.4rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--gold-line);
+  border-bottom: 1px solid var(--gold-line);
+}
+.facts div {
+  padding: 0.9rem 0.4rem;
+}
+.facts div + div {
+  border-left: 1px solid var(--gold-line);
+}
+.facts dt {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+.facts dd {
+  margin: 0.35rem 0 0;
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+.note {
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+.ctas {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+/* ——— polaroids ——— */
+.pic {
+  margin: 0;
+  padding: 8px 8px 0;
+  background: #fdfbf6;
+  box-shadow:
+    0 30px 50px -20px rgba(0, 0, 0, 0.7),
+    0 4px 10px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.picImg {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+.picImg img {
+  object-fit: cover;
+}
+.pic figcaption {
+  padding: 0.35rem 0 0.5rem;
+  text-align: center;
+  font-size: clamp(1rem, 1.5vw, 1.4rem);
+  line-height: 1.1;
+  color: var(--ink);
+}
+.pic:not(:has(figcaption)) {
+  padding-bottom: 8px;
+}
+
+@media (max-width: 760px) {
+  .section {
+    height: 480vh;
+  }
+  .lead,
+  .note {
+    display: none;
+  }
+  .facts dd {
+    font-size: 0.98rem;
+  }
+  .facts dt {
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
+  }
+  .ctas :global(.btn) {
+    min-height: 44px;
+    padding: 0 1.1rem;
+    font-size: 0.68rem;
+  }
+  .pic {
+    padding: 5px 5px 0;
+  }
+  .pic figcaption {
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section {
+    height: auto;
+  }
+  .sticky {
+    position: relative;
+    min-height: 100svh;
+  }
+}

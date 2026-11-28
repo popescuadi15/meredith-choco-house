@@ -41,75 +41,6 @@
   gap: 0.8rem;
 }
 
-/* Events */
-.events {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  grid-template-rows: auto auto;
-  gap: clamp(1.5rem, 4vw, 4rem);
-  align-items: center;
-}
-.eventsImg {
-  position: relative;
-  grid-row: 1 / span 2;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-}
-.eventsImg img,
-.eventsSmall img,
-.storyImg img {
-  object-fit: cover;
-}
-.eventsSmall {
-  position: absolute;
-  width: clamp(160px, 22vw, 320px);
-  aspect-ratio: 4 / 3;
-  margin-left: calc(50% - clamp(80px, 11vw, 160px));
-  margin-top: 55%;
-  border: 8px solid var(--paper);
-  box-shadow: 0 30px 60px -30px rgba(60, 40, 20, 0.45);
-  display: none;
-}
-.eventsCopy > p {
-  margin-top: 1.4rem;
-  color: var(--ink-soft);
-  max-width: 520px;
-}
-.facts {
-  margin: 2rem 0 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--gold-line);
-  border-bottom: 1px solid var(--gold-line);
-}
-.facts div {
-  padding: 1.2rem 1rem 1.2rem 0;
-}
-.facts div + div {
-  padding-left: 1rem;
-  border-left: 1px solid var(--gold-line);
-}
-.facts dt {
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold-deep);
-}
-.facts dd {
-  margin: 0.4rem 0 0;
-  font-family: var(--serif);
-  font-size: 1.3rem;
-  line-height: 1.2;
-}
-.eventsCopy .note {
-  font-size: 0.9rem;
-  margin-top: 1.4rem;
-}
-.eventsCopy .ctas {
-  margin-top: 2rem;
-}
-
 /* Story */
 .quote {
   margin: 1.6rem auto 0;
@@ -148,6 +79,9 @@
   gap: clamp(2rem, 6vw, 6rem);
   align-items: center;
   margin-top: clamp(4rem, 8vw, 7rem);
+}
+.storyImg img {
+  object-fit: cover;
 }
 .storyImg {
   position: relative;
@@ -348,14 +282,9 @@
   }
 }
 @media (max-width: 900px) {
-  .events,
   .storyRow,
   .faq {
     grid-template-columns: 1fr;
-  }
-  .eventsImg {
-    grid-row: auto;
-    aspect-ratio: 4 / 3;
   }
   .steps {
     grid-template-columns: 1fr;
@@ -367,13 +296,5 @@
 @media (max-width: 560px) {
   .grid4 {
     grid-template-columns: 1fr;
-  }
-  .facts {
-    grid-template-columns: 1fr;
-  }
-  .facts div + div {
-    padding-left: 0;
-    border-left: 0;
-    border-top: 1px solid var(--gold-line);
   }
 }
