@@ -36,6 +36,14 @@ export const nav = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
+/** Product shortcuts (desktop "Colecții" dropdown, mobile menu). */
+export const shop = [
+  { href: "/produse#tablete", label: "Tablete", note: "de la 15 lei" },
+  { href: "/produse#cutii-cadou", label: "Cutii cadou", note: "50 – 200 lei" },
+  { href: "/produse#craciun", label: "Crăciun", note: "de la 25 lei" },
+  { href: "/evenimente", label: "Mărturii & Choco Bar", note: "de la 5 lei" },
+] as const;
+
 export const orderRules = [
   "Comenzile se fac telefonic sau pe WhatsApp: tablete cu 24–48 h înainte, cutii cadou cu minimum 48 h, restul produselor cu 48–72 h.",
   "Degustările pentru evenimente se programează telefonic cu 24 de ore înainte.",

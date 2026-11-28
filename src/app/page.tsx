@@ -17,14 +17,14 @@ export default function Home() {
     <>
       <Hero />
       <Collection />
-      <AtelierDay />
+      <Christmas />
       <BoxReveal />
       <GiftBoxes />
-      <Christmas />
       <Events />
+      <FinalCta />
+      <AtelierDay />
       <Story />
       <HowToOrder />
-      <FinalCta />
       <JsonLd data={faqSchema(faq)} />
     </>
   );

@@ -80,13 +80,16 @@ export default function Collection() {
   const cur = items[active];
 
   return (
-    <section ref={root} className={s.section} data-header="clear" style={{ height: `${N * 90 + 30}vh` }} aria-labelledby="collection-title">
+    <section id="tablete" ref={root} className={s.section} data-header="clear" style={{ height: `${N * 90 + 30}vh` }} aria-labelledby="collection-title">
       <div className={s.sticky}>
         <div className={s.head}>
           <p className={s.kicker}>02 — Colecția de tablete</p>
           <h2 id="collection-title" className={s.lead}>
             Tablete de 100 g și tablete umplute de 80 g, din ciocolată belgiană Callebaut.
           </h2>
+          <Link href="/produse#tablete" className={s.all}>
+            Vezi toate tabletele →
+          </Link>
         </div>
         <div className={s.weight} aria-hidden="true">
           <strong key={cur.slug}>{cur.weight?.replace(" ", "")}</strong>

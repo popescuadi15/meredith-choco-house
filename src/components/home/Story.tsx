@@ -7,7 +7,7 @@ export default function Story() {
     <section className={`section ${s.light} ${s.story}`} aria-labelledby="story-title">
       <div className="container">
         <p className="eyebrow" style={{ textAlign: "center" }}>
-          Povestea noastră
+          07 — Povestea noastră
         </p>
         <h2 id="story-title" className="visually-hidden">
           Povestea Meredith

@@ -14,7 +14,7 @@ export default function HowToOrder() {
       <div className="container">
         <div className={s.split}>
           <div>
-            <p className="eyebrow">Cum comanzi</p>
+            <p className="eyebrow">08 — Cum comanzi</p>
             <h2 id="how-title" className={s.h2}>
               Simplu, <em>ca un dar.</em>
             </h2>

@@ -38,10 +38,10 @@ export default function BoxReveal() {
   }, []);
 
   return (
-    <section ref={root} className={s.section} aria-labelledby="box-title">
+    <section id="cutii-cadou" ref={root} className={s.section} aria-labelledby="box-title">
       <div className={s.sticky}>
         <div className={s.copy}>
-          <p className="eyebrow">04 — Meredith Selection</p>
+          <p className="eyebrow">04 — Cutii cadou · Meredith Selection</p>
           <h2 id="box-title">
             Douăsprezece praline, <em>pictate una câte una.</em>
           </h2>

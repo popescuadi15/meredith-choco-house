@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { nav } from "@/lib/site";
+import { nav, shop } from "@/lib/site";
 import { useOrder } from "@/lib/order";
 import s from "./Header.module.css";
 
@@ -74,11 +74,30 @@ export default function Header() {
         </Link>
 
         <nav className={s.nav} aria-label="Navigare principală">
-          {nav.map((n) => (
-            <Link key={n.href} href={n.href} className={pathname.startsWith(n.href) ? s.active : undefined}>
-              {n.label}
-            </Link>
-          ))}
+          {nav.map((n) =>
+            n.href === "/produse" ? (
+              <div key={n.href} className={s.drop}>
+                <Link href={n.href} className={pathname.startsWith(n.href) ? s.active : undefined} aria-haspopup="true">
+                  {n.label}
+                </Link>
+                <div className={s.dropMenu}>
+                  {shop.map((c) => (
+                    <Link key={c.href} href={c.href}>
+                      <span>{c.label}</span>
+                      <small>{c.note}</small>
+                    </Link>
+                  ))}
+                  <Link href="/produse" className={s.dropAll}>
+                    Toate produsele →
+                  </Link>
+                </div>
+              </div>
+            ) : (
+              <Link key={n.href} href={n.href} className={pathname.startsWith(n.href) ? s.active : undefined}>
+                {n.label}
+              </Link>
+            ),
+          )}
         </nav>
 
         <div className={s.actions}>
@@ -103,7 +122,16 @@ export default function Header() {
             </Link>
           ))}
         </nav>
-        <p className="script">Fiecare creație are propria poveste.</p>
+        <div className={s.shopChips}>
+          <p className="eyebrow">Comandă rapid</p>
+          <div>
+            {shop.map((c) => (
+              <Link key={c.href} href={c.href} onClick={() => setMenu(false)}>
+                {c.label}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </header>
   );

@@ -17,16 +17,19 @@ const trees = [
 export default function Christmas() {
   const items = inCategory("craciun");
   return (
-    <section className={s.section} data-header="dark" aria-labelledby="xmas-title">
+    <section id="craciun" className={s.section} data-header="dark" aria-labelledby="xmas-title">
       <div className={s.snow} aria-hidden="true" />
       <div className="container">
         <div className={s.head}>
-          <p className="eyebrow">05 — Ediție de sezon</p>
+          <p className="eyebrow">03 — Ediție de sezon</p>
           <h2 id="xmas-title">
             <span className="script gold-text">Crăciun</span> la Meredith
           </h2>
           <p className={s.lead}>Catalogul nostru se lansează pe 1 decembrie, la ora 19:00. Brăduți și globuri din ciocolată belgiană, decorați manual și umpluți cu cremă.</p>
           <Countdown to={site.launch} />
+          <Link href="/produse#craciun" className={`btn btn--light btn--ghost ${s.all}`}>
+            Toată colecția de Crăciun
+          </Link>
         </div>
 
         <div className={s.trees}>
