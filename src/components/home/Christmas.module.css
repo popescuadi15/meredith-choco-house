@@ -15,6 +15,7 @@
   top: 0;
   height: 100vh;
   height: 100svh;
+  height: 100dvh; /* follows the mobile URL bar, so no strip shows below the scene when it collapses */
   overflow: hidden;
 }
 

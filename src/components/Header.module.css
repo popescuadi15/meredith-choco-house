@@ -249,9 +249,16 @@
   opacity: 1;
   transform: none;
 }
-/* The header switches to its open look at once (no 0.5s background fade) */
+/* The header switches to its open look at once (no 0.5s background fade).
+   No backdrop-filter while open: a filtered header becomes the containing block of the
+   fixed menu panel, which then collapses to the header's height (iOS showed the page through). */
 .menuOpen {
   transition: none;
+}
+.header.menuOpen {
+  background: var(--ivory);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 @media (min-width: 981px) {
   .mobile {
