@@ -23,7 +23,6 @@ export const site = {
     instagram: "https://www.instagram.com/meredith_chocohouse/",
     tiktok: "https://www.tiktok.com/@meredith_chocohouse",
   },
-  launch: "2026-12-01T19:00:00+02:00",
   mapsQuery: "Strada Pajiștei 14, Caransebeș",
 } as const;
 
