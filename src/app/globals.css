@@ -67,6 +67,15 @@ a {
   text-decoration: none;
 }
 
+/* No blue/grey flash on tap (mobile) — every control has its own pressed/focus style */
+a,
+button,
+summary,
+label,
+[role="button"] {
+  -webkit-tap-highlight-color: transparent;
+}
+
 button {
   font: inherit;
   color: inherit;

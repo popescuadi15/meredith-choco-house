@@ -222,8 +222,8 @@ export const products: Product[] = [
   }),
   tablet80("de fistic", {
     slug: "tableta-crema-fistic",
-    word: "LOVE YOU",
-    tone: { bg: "#c9b48f", word: "#f7efdf", ink: "#24190c" },
+    word: "FISTIC",
+    tone: { bg: "#a9b48a", word: "#eef1df", ink: "#1c2412" },
     featured: true,
     short: "Tabletă umplută cu cremă de fistic.",
     allergens: "FISTIC",
