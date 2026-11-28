@@ -29,7 +29,7 @@ export default function EventsPage() {
               <Image src="/images/photos/eveniment-cutii-praline.jpg" alt="Mărturii și praline în cutii, pregătite pentru un eveniment" fill sizes="(max-width: 900px) 100vw, 50vw" />
             </div>
             <div className={s.featureText}>
-              <p className="eyebrow">01 — Mărturii</p>
+              <p className="eyebrow">Mărturii</p>
               <h2>Mărturii de bun venit</h2>
               <p className={s.big}>de la 5 lei / bucată · aprox. 10 g</p>
               <p>
@@ -43,7 +43,7 @@ export default function EventsPage() {
               <Image src="/images/photos/candybar-randuri.jpg" alt="Deluxe Meredith Choco Bar: rânduri de praline, batoane și bomboane pe trepte aurii" fill sizes="(max-width: 900px) 100vw, 50vw" />
             </div>
             <div className={s.featureText}>
-              <p className="eyebrow">02 — Deluxe Meredith Choco Bar</p>
+              <p className="eyebrow">Deluxe Meredith Choco Bar</p>
               <h2>Un bar de ciocolată pentru invitații tăi</h2>
               <p className={s.big}>de la 10 lei / persoană</p>
               <p>

@@ -190,8 +190,7 @@
     gap: 0.9rem;
     padding-right: 0;
   }
-  .dots {
-    justify-content: flex-start;
+  .nav {
     order: -1;
   }
   .info p + p {
@@ -210,9 +209,15 @@
     font-size: 0.68rem;
   }
 }
+/* "See all" link centred above the slide dots */
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
 .all {
   display: inline-block;
-  margin-top: 0.9rem;
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.2em;

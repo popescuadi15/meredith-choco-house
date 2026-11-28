@@ -21,7 +21,7 @@ export default function Christmas() {
       <div className={s.snow} aria-hidden="true" />
       <div className="container">
         <div className={s.head}>
-          <p className="eyebrow">03 — Ediție de sezon</p>
+          <p className="eyebrow">Ediție de sezon</p>
           <h2 id="xmas-title">
             <span className="script gold-text">Crăciun</span> la Meredith
           </h2>

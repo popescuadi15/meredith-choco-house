@@ -83,13 +83,9 @@ export default function Collection() {
     <section id="tablete" ref={root} className={s.section} data-header="clear" style={{ height: `${N * 90 + 30}vh` }} aria-labelledby="collection-title">
       <div className={s.sticky}>
         <div className={s.head}>
-          <p className={s.kicker}>02 — Colecția de tablete</p>
           <h2 id="collection-title" className={s.lead}>
             Tablete de 100 g și tablete umplute de 80 g, din ciocolată belgiană Callebaut.
           </h2>
-          <Link href="/produse#tablete" className={s.all}>
-            Vezi toate tabletele →
-          </Link>
         </div>
         <div className={s.weight} aria-hidden="true">
           <strong key={cur.slug}>{cur.weight?.replace(" ", "")}</strong>
@@ -116,10 +112,15 @@ export default function Collection() {
             </p>
             <p>{cur.short}</p>
           </div>
-          <div className={s.dots} role="tablist" aria-label="Tablete">
-            {items.map((p, i) => (
-              <button key={p.slug} role="tab" aria-selected={i === active} aria-label={p.name} className={i === active ? s.dotOn : undefined} onClick={() => goTo(i)} />
-            ))}
+          <div className={s.nav}>
+            <Link href="/produse#tablete" className={s.all}>
+              Vezi toate tabletele →
+            </Link>
+            <div className={s.dots} role="tablist" aria-label="Tablete">
+              {items.map((p, i) => (
+                <button key={p.slug} role="tab" aria-selected={i === active} aria-label={p.name} className={i === active ? s.dotOn : undefined} onClick={() => goTo(i)} />
+              ))}
+            </div>
           </div>
           <div className={s.buy}>
             <span className={s.price}>{formatPrice(cur)}</span>

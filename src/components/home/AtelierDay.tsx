@@ -71,7 +71,7 @@ export default function AtelierDay() {
         <div className={`${s.layer} ${s.shade}`} />
 
         <div className={s.head}>
-          <p className="eyebrow">06 — O zi în laborator</p>
+          <p className="eyebrow">O zi în laborator</p>
           <h2 id="atelier-title">
             Caransebeș, <em>Strada Pajiștei 14</em>
           </h2>
