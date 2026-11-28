@@ -420,7 +420,14 @@ export const products: Product[] = [
 
 export const bySlug = (slug: string) => products.find((p) => p.slug === slug);
 export const inCategory = (c: Category) => products.filter((p) => p.category === c);
-export const sliderTablets = products.filter((p) => p.tone && p.cutout);
+// Home slider: catalogue order, except the "I Love You" pistachio tablet goes before crunchy cocos
+const sliderSwap = ["tableta-crema-fistic", "tableta-crema-crunchy-cocos"];
+export const sliderTablets = products
+  .filter((p) => p.tone && p.cutout)
+  .sort((a, b) => {
+    const i = sliderSwap.indexOf(a.slug), j = sliderSwap.indexOf(b.slug);
+    return i >= 0 && j >= 0 ? i - j : 0;
+  });
 
 /** Unit price of an order line (variant price when one is chosen). */
 export function linePrice(p: Product, variantId?: string) {
