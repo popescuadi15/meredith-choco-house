@@ -9,12 +9,14 @@ import AddButton from "@/components/AddButton";
 import s from "./BoxReveal.module.css";
 
 const box = bySlug("cutie-meredith-selection")!;
+// One column of the box per cream — the praline shown is the one Meredith makes for it.
 const fillings = [
-  { name: "Fistic", note: "Cremă de fistic, intensă și catifelată" },
-  { name: "Caramel", note: "Cremă fină de caramel" },
-  { name: "Nocciola", note: "Cremă de alune de pădure" },
-  { name: "Cocos", note: "Cremă delicată de cocos" },
+  { id: "fistic", name: "Fistic", note: "Cremă de fistic, intensă și catifelată" },
+  { id: "caramel", name: "Caramel", note: "Cremă fină de caramel" },
+  { id: "nocciola", name: "Nocciola", note: "Cremă de alune de pădure" },
+  { id: "cocos", name: "Cocos", note: "Cremă delicată de cocos" },
 ];
+const ROWS = 3;
 const clamp = (x: number) => Math.min(1, Math.max(0, x));
 
 export default function BoxReveal() {
@@ -59,8 +61,17 @@ export default function BoxReveal() {
 
         <div className={s.stage}>
           <div className={s.box}>
-            <div className={s.base}>
-              <Image src="/images/cut/cutie-selection.webp" alt={box.alt} fill sizes="(max-width: 900px) 90vw, 46vw" />
+            <div className={s.base} data-step={step} style={{ "--lx": `${12.5 + Math.max(0, step) * 25}%` } as React.CSSProperties}>
+              <div className={s.tray} role="img" aria-label={`${box.name}: douăsprezece praline pictate manual, câte trei pentru fiecare cremă — fistic, caramel, nocciola și cocos`}>
+                {Array.from({ length: ROWS }, (_, r) =>
+                  fillings.map((f, c) => (
+                    <div key={`${f.id}-${r}`} className={`${s.cell} ${step === c ? s.cellOn : ""}`} data-dim={step >= 0 && step !== c}>
+                      <Image src={`/images/pralines/${f.id}-${r + 1}.webp`} alt="" width={320} height={320} sizes="120px" />
+                    </div>
+                  )),
+                )}
+                <span className={s.light} aria-hidden="true" />
+              </div>
             </div>
             <div className={s.lid} aria-hidden="true">
               <div className={s.lidFace}>
@@ -84,6 +95,17 @@ export default function BoxReveal() {
             </div>
           </div>
         </div>
+
+        {/* phones: the list is hidden, so the box says which cream is lit */}
+        <p className={s.caption} aria-live="polite">
+          {step >= 0 ? (
+            <>
+              <strong key={fillings[step].id}>{fillings[step].name}</strong> {fillings[step].note}
+            </>
+          ) : (
+            "Patru creme, câte trei praline din fiecare"
+          )}
+        </p>
 
         <ol className={s.list} aria-label="Umpluturi">
           {fillings.map((f, i) => (
