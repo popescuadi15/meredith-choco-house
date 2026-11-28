@@ -188,6 +188,12 @@
   will-change: transform, opacity;
   filter: drop-shadow(0 30px 28px rgba(0, 0, 0, 0.5));
 }
+/* composed sets (tree + baubles …): taller, wider box, same foot line as the lone trees */
+.wide {
+  width: calc(var(--th) * 1.12);
+  height: calc(var(--th) * 1.15);
+  margin: calc(var(--th) * -0.73) 0 0 calc(var(--th) * -0.56);
+}
 .tree img {
   object-fit: contain;
   object-position: 50% 100%;

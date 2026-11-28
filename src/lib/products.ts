@@ -353,9 +353,9 @@ export const products: Product[] = [
     description: "Un brăduț și globuri din ciocolată cu lapte sau albă, decorate manual și umplute cu cremă de caramel, nocciola, fistic, Biscoff sau cocos.",
     contents: ["Brăduț din ciocolată cu lapte sau albă, umplut", "Globuri din ciocolată, umplute"],
     allergens: "În funcție de cremă: ALUNE DE PĂDURE, FISTIC, GLUTEN (Biscoff)",
-    cutout: "/images/cut/bradut-alb.webp",
+    cutout: "/images/cut/little-christmas.webp",
     photo: "/images/photos/bradut-alb-globuri.jpg",
-    alt: "Brăduț de ciocolată albă pictat colorat, înconjurat de globuri din ciocolată",
+    alt: "Meredith Little Christmas: brăduț de ciocolată albă pictat colorat și globuri din ciocolată",
     badge: "Ediție de sezon",
   },
   {
@@ -368,9 +368,9 @@ export const products: Product[] = [
     description: "Varianta generoasă: brăduț și globuri din ciocolată decorate manual și umplute cu cremă, plus mini tablete cu zmeură liofilizată.",
     contents: ["Brăduț din ciocolată cu lapte sau albă, umplut", "Globuri din ciocolată, umplute", "Mini tablete cu zmeură liofilizată"],
     allergens: "În funcție de cremă: ALUNE DE PĂDURE, FISTIC, GLUTEN (Biscoff)",
-    cutout: "/images/cut/bradut-lapte-2.webp",
-    photo: "/images/photos/bradut-lapte-globuri.jpg",
-    alt: "Brăduț de ciocolată cu lapte cu globuri de ciocolată pictate",
+    // composed set: tree + baubles + raspberry mini tablets (scripts/xmas_compose.py)
+    cutout: "/images/cut/meredith-christmas.webp",
+    alt: "Meredith Christmas: brăduț de ciocolată cu lapte, globuri din ciocolată și mini tablete cu zmeură",
   },
 
   // ——— Evenimente ———

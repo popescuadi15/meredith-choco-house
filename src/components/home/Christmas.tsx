@@ -18,12 +18,13 @@ import s from "./Christmas.module.css";
 */
 
 // Five trees on the ring (72° apart); products sit on slots 0, 2, 4, so every stop lands on one of them.
-const trees = [
+// each product slot shows exactly what the set contains; `wide` = a composed set, not a lone tree
+const trees: { src: string; alt: string; wide?: boolean }[] = [
   { src: "/images/cut/bradut-lapte.webp", alt: "Brăduț de ciocolată cu lapte cu decor auriu" },
   { src: "/images/cut/bradut-verde.webp", alt: "Brăduț de ciocolată verde pictat manual" },
-  { src: "/images/cut/bradut-alb.webp", alt: "Brăduț de ciocolată albă cu stropi colorați" },
+  { src: "/images/cut/little-christmas.webp", alt: "Meredith Little Christmas: brăduț de ciocolată albă și globuri din ciocolată", wide: true },
   { src: "/images/cut/bradut-alb-2.webp", alt: "Brăduț de ciocolată albă pictat manual în culori" },
-  { src: "/images/cut/bradut-lapte-2.webp", alt: "Brăduț de ciocolată cu lapte pictat cu auriu" },
+  { src: "/images/cut/meredith-christmas.webp", alt: "Meredith Christmas: brăduț, globuri și mini tablete cu zmeură", wide: true },
 ];
 const order = ["bradut-de-ciocolata", "meredith-little-christmas-150", "meredith-christmas"];
 
@@ -224,8 +225,8 @@ export default function Christmas() {
           <div className={s.bokeh} aria-hidden="true" />
           <div className={s.ring} data-ring>
             {trees.map((t, k) => (
-              <div key={t.src} className={s.tree} data-tree>
-                <Image src={t.src} alt={k % 2 === 0 ? t.alt : ""} fill sizes="(max-width: 760px) 60vw, 30vw" loading={k === 0 ? "eager" : "lazy"} />
+              <div key={t.src} className={t.wide ? `${s.tree} ${s.wide}` : s.tree} data-tree>
+                <Image src={t.src} alt={k % 2 === 0 ? t.alt : ""} fill sizes={t.wide ? "(max-width: 760px) 90vw, 45vw" : "(max-width: 760px) 60vw, 30vw"} loading={k === 0 ? "eager" : "lazy"} />
               </div>
             ))}
             <div className={s.floor} aria-hidden="true" />
