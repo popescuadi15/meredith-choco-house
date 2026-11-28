@@ -31,7 +31,7 @@ export const nav = [
   { href: "/produse", label: "Colecții" },
   { href: "/evenimente", label: "Evenimente" },
   { href: "/degustari", label: "Degustări" },
-  { href: "/povestea", label: "Povestea" },
+  { href: "/povestea", label: "Poveste" },
   { href: "/galerie", label: "Galerie" },
   { href: "/contact", label: "Contact" },
 ] as const;

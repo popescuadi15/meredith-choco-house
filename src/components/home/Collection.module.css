@@ -160,8 +160,13 @@
   font-family: var(--serif);
   font-size: 1.6rem;
 }
+/* Button follows the slide: dark ink on light slides, light ink on the dark one — text always contrasts */
 .add {
   --b: var(--ink) !important;
+  color: var(--bg) !important;
+}
+.add:hover {
+  color: var(--ivory) !important;
 }
 
 @media (max-width: 760px) {

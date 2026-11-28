@@ -13,7 +13,7 @@ export default function StoryPage() {
   return (
     <>
       <header className="page-hero">
-        <p className="eyebrow">Povestea</p>
+        <p className="eyebrow">Poveste</p>
         <h1>
           Un dulap cu <span className="script gold-text">surprize</span>
         </h1>

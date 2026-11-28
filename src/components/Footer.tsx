@@ -44,18 +44,29 @@ export default function Footer() {
           </div>
           <div>
             <h2 className="eyebrow">Urmărește-ne</h2>
-            <a href={site.social.instagram} target="_blank" rel="noopener">
-              Instagram
-            </a>
-            <a href={site.social.tiktok} target="_blank" rel="noopener">
-              TikTok
-            </a>
+            <div className={s.social}>
+              <a href={site.social.instagram} target="_blank" rel="noopener" aria-label="Meredith Choco House pe Instagram">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" strokeWidth="1.6" />
+                  <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" strokeWidth="1.6" />
+                  <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" />
+                </svg>
+              </a>
+              <a href={site.social.tiktok} target="_blank" rel="noopener" aria-label="Meredith Choco House pe TikTok">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <path
+                    fill="currentColor"
+                    d="M16.6 3c.3 2.1 1.6 3.7 3.7 3.9v3a7.1 7.1 0 0 1-3.6-1.1v6.4A6.2 6.2 0 1 1 10.5 9v3.1a3.1 3.1 0 1 0 3.1 3.1V3h3Z"
+                  />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
       <div className={`container ${s.bottom}`}>
         <p>
-          © 2026 {site.legalName} · CUI {site.cui} · Foto: PH Studio — Petru Humița
+          © 2026 {site.legalName}
         </p>
         <nav aria-label="Legal">
           <Link href="/termeni">Termeni</Link>

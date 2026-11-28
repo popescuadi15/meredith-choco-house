@@ -47,7 +47,7 @@ export function OrderProvider({ children }: { children: React.ReactNode }) {
       if (found) return ls.map((l) => (lineKey(l) === key ? { ...l, qty: l.qty + qty } : l));
       return [...ls, { slug, variant, qty }];
     });
-    setOpen(true);
+    // The basket no longer pops open: the button confirms and the header basket bumps instead.
   }, []);
 
   const setQty = useCallback((key: string, qty: number) => {

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { nav } from "@/lib/site";
 import { useOrder } from "@/lib/order";
 import s from "./Header.module.css";
@@ -46,8 +46,21 @@ export default function Header() {
   }, [pathname]);
 
   useEffect(() => {
+    // Freeze the page behind the open menu (Lenis drives the scroll, so stop it too).
+    const lenis = (window as unknown as { __lenis?: { stop(): void; start(): void } }).__lenis;
     document.documentElement.style.overflow = menu ? "hidden" : "";
+    if (menu) lenis?.stop();
+    else lenis?.start();
   }, [menu]);
+
+  // Little "bump" on the basket whenever a product is added.
+  const [bump, setBump] = useState(0);
+  const prev = useRef(count);
+  useEffect(() => {
+     
+    if (count > prev.current) setBump((b) => b + 1);
+    prev.current = count;
+  }, [count]);
 
   const dark = theme === "dark" && !menu;
 
@@ -55,7 +68,9 @@ export default function Header() {
     <header className={`${s.header} ${dark ? s.dark : theme === "clear" && !menu ? s.clear : s.light} ${scrolled ? s.scrolled : ""} ${menu ? s.menuOpen : ""}`}>
       <div className={s.inner}>
         <Link href="/" className={s.logo} aria-label="Meredith Choco House — acasă">
-          <Image src={dark ? "/images/logo-gold.png" : "/images/logo-gold-dark.png"} alt="Meredith Choco House" width={772} height={388} priority sizes="120px" />
+          {/* Both logos are loaded up front so switching (dark sections, open menu) is instant. */}
+          <Image className={dark ? s.logoOn : s.logoOff} src="/images/logo-gold.png" alt="Meredith Choco House" width={772} height={388} priority sizes="120px" />
+          <Image className={dark ? s.logoOff : s.logoOn} src="/images/logo-gold-dark.png" alt="" aria-hidden="true" width={772} height={388} priority sizes="120px" />
         </Link>
 
         <nav className={s.nav} aria-label="Navigare principală">
@@ -67,9 +82,11 @@ export default function Header() {
         </nav>
 
         <div className={s.actions}>
-          <button className={s.bag} onClick={() => setOpen(true)} aria-label={`Comanda ta, ${count} produse`}>
+          <button className={`${s.bag} ${count > 0 ? s.bagFull : ""}`} onClick={() => setOpen(true)} aria-label={`Comanda ta, ${count} produse`}>
             <span>Comanda</span>
-            <span className={s.count} data-has={count > 0}>{count}</span>
+            <span key={bump} className={`${s.count} ${bump ? s.bump : ""}`} data-has={count > 0}>
+              {count}
+            </span>
           </button>
           <button className={s.burger} onClick={() => setMenu((m) => !m)} aria-expanded={menu} aria-controls="mobile-menu" aria-label="Meniu">
             <i />
@@ -78,10 +95,10 @@ export default function Header() {
         </div>
       </div>
 
-      <div id="mobile-menu" className={s.mobile} hidden={!menu}>
+      <div id="mobile-menu" className={`${s.mobile} ${menu ? s.mobileOn : ""}`} aria-hidden={!menu} inert={!menu}>
         <nav aria-label="Navigare mobil">
           {nav.map((n, i) => (
-            <Link key={n.href} href={n.href} style={{ transitionDelay: `${80 + i * 50}ms` }}>
+            <Link key={n.href} href={n.href} style={{ transitionDelay: menu ? `${i * 30}ms` : "0ms" }} onClick={() => setMenu(false)}>
               {n.label}
             </Link>
           ))}

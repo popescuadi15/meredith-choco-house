@@ -22,11 +22,19 @@
 .logo {
   justify-self: start;
   width: 112px;
-  display: block;
+  display: grid;
 }
 .logo img {
+  grid-area: 1 / 1;
   width: 100%;
   height: auto;
+  transition: opacity 0.3s var(--ease);
+}
+.logoOn {
+  opacity: 1;
+}
+.logoOff {
+  opacity: 0;
 }
 .nav {
   display: flex;
@@ -199,12 +207,64 @@
     padding: 0 0.4rem;
   }
 }
-.mobile[hidden] {
-  display: none;
+/* Mobile menu: always in the DOM, opens instantly with a short fade/slide */
+.mobile {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.22s var(--ease),
+    transform 0.22s var(--ease),
+    visibility 0s linear 0.22s;
+}
+.mobileOn {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 0.22s var(--ease),
+    transform 0.22s var(--ease),
+    visibility 0s;
+}
+.mobile nav a {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+.mobileOn nav a {
+  opacity: 1;
+  transform: none;
+}
+/* The header switches to its open look at once (no 0.5s background fade) */
+.menuOpen {
+  transition: none;
 }
 @media (min-width: 981px) {
   .mobile {
     display: none;
+  }
+}
+
+/* Basket: visible state when it holds products + a bump on each addition */
+.bagFull {
+  border-color: var(--gold);
+}
+.bump {
+  animation: bump 0.6s var(--ease);
+}
+@keyframes bump {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.45);
+    box-shadow: 0 0 0 6px rgba(176, 138, 80, 0.25);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(176, 138, 80, 0);
   }
 }
 .clear {

@@ -18,6 +18,11 @@
   background-size: 320px 320px;
   animation: snow 30s linear infinite;
   opacity: 0.8;
+  pointer-events: none; /* decorative layer must never swallow clicks */
+}
+.section > :global(.container) {
+  position: relative;
+  z-index: 1;
 }
 @keyframes snow {
   to {
@@ -109,26 +114,29 @@
 .tree img {
   object-fit: contain;
 }
+/* Cards share rows (badge · title · text · price) through subgrid, so every level lines up */
 .cards {
   list-style: none;
   padding: 0;
   margin: clamp(3rem, 6vw, 5rem) 0 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
+  grid-template-rows: auto auto 1fr auto;
+  column-gap: 1px;
+  row-gap: 0;
   background: rgba(217, 192, 143, 0.2);
   border: 1px solid rgba(217, 192, 143, 0.2);
 }
 .cards li {
   background: var(--cocoa);
   padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2rem;
+  display: grid;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
+  row-gap: 0;
 }
 .badge {
-  display: inline-block;
+  display: block;
   font-size: 0.6rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -144,6 +152,8 @@
   font-size: 0.92rem;
 }
 .cardFoot {
+  margin-top: 2rem;
+  align-self: end;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -162,6 +172,11 @@
 @media (max-width: 860px) {
   .cards {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
+    row-gap: 1px;
+  }
+  .cards li {
+    grid-template-rows: auto auto 1fr auto;
   }
   .trees {
     grid-template-columns: repeat(3, 1fr);

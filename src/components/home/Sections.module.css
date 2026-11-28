@@ -32,7 +32,8 @@
 .grid4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: clamp(1rem, 1.8vw, 1.6rem);
+  column-gap: clamp(1rem, 1.8vw, 1.6rem);
+  row-gap: 0; /* cards use subgrid rows; spacing comes from their margin */
 }
 .ctas {
   display: flex;

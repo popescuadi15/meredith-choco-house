@@ -1,0 +1,48 @@
+/* Sits at the top of each inner page and scrolls away with it (never covers content) */
+.back {
+  position: absolute;
+  z-index: 45;
+  top: calc(var(--header-h) + 14px);
+  left: var(--gutter);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 40px;
+  padding: 0 1rem 0 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--gold-line);
+  background: rgba(251, 248, 243, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--ink);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  box-shadow: 0 10px 24px -16px rgba(60, 40, 20, 0.5);
+  transition:
+    background 0.3s var(--ease),
+    color 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+}
+.back:hover {
+  background: var(--cocoa);
+  border-color: var(--cocoa);
+  color: var(--ivory);
+}
+.back svg {
+  transition: transform 0.3s var(--ease);
+}
+.back:hover svg {
+  transform: translateX(-3px);
+}
+@media (max-width: 760px) {
+  .back span {
+    display: none;
+  }
+  .back {
+    width: 40px;
+    padding: 0;
+    justify-content: center;
+  }
+}

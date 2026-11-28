@@ -40,13 +40,12 @@ export default function Christmas() {
         <ul className={s.cards}>
           {items.map((p) => (
             <li key={p.slug} className="reveal">
-              <div>
-                {p.badge && <span className={s.badge}>{p.badge}</span>}
-                <h3>
-                  <Link href={`/produse/${p.slug}`}>{p.name}</Link>
-                </h3>
-                <p>{p.short}</p>
-              </div>
+              {/* badge row is always present so titles line up across the cards */}
+              <span className={s.badge}>{p.badge ?? "\u00a0"}</span>
+              <h3>
+                <Link href={`/produse/${p.slug}`}>{p.name}</Link>
+              </h3>
+              <p>{p.short}</p>
               <div className={s.cardFoot}>
                 <span>
                   {formatPrice(p)} <small>· {p.weight}</small>

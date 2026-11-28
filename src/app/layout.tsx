@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import OrderDrawer from "@/components/OrderDrawer";
 import WhatsAppFab from "@/components/WhatsAppFab";
 import Motion from "@/components/Motion";
+import BackButton from "@/components/BackButton";
 import JsonLd from "@/components/JsonLd";
 import { OrderProvider } from "@/lib/order";
 import { businessSchema } from "@/lib/schema";
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             Sari la conținut
           </a>
           <Header />
+          <BackButton />
           <main id="main">{children}</main>
           <Footer />
           <OrderDrawer />

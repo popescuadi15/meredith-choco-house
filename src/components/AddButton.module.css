@@ -35,3 +35,11 @@
 .picker .on small {
   color: var(--gold-soft);
 }
+
+/* Confirmation state after "Adaugă" */
+.added,
+.added:hover {
+  background: var(--gold) !important;
+  border-color: var(--gold) !important;
+  color: var(--white) !important;
+}
