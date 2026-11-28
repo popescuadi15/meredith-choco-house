@@ -9,10 +9,10 @@ import s from "./Hero.module.css";
 
 const stages = [
   { a: "Ciocolată", b: "belgiană.", text: "Callebaut — ciocolată belgiană premium. Fiecare dorință inspiră o creație, fiecare creație devine unică." },
-  { a: "Încălzită", b: "încet.", text: "Fiecare cu timpul și temperatura ei — fiecare tip de ciocolată are o altă temperatură de topire. Totul începe cu pasiunea pentru ciocolată." },
-  { a: "Temperată", b: "manual.", text: "Pentru cele trei semne ale unei ciocolate premium: luciu, pocnet la rupere și contracția care o face să iasă perfect din matriță." },
+  { a: "Încălzită", b: "încet.", text: "Încet, căldura îmbrățișează ciocolata, trezindu-i aroma și pregătind-o pentru o nouă formă." },
+  { a: "Temperare.", b: "", text: "O îmbinare între temperatură și răbdare, care transformă ciocolata într-o creație fină, cu luciu delicat și textură perfectă." },
   { a: "Pictată", b: "pentru tine.", text: "Colorată și pictată artizanal, fiecare creație e unică. Îți dăruim timp și atenție, ca să o facem exact așa cum ai visat-o." },
-  { a: "Gata de", b: "dăruit.", text: "După câteva ore la răcit, se întărește și e gata de ambalat în cutii premium, după dorința ta — ca să creezi momente de neuitat celor dragi." },
+  { a: "Un dar cu", b: "gust de magie.", text: "Pregătită să surprindă, ciocolata noastră transformă fiecare dăruire într-un moment de neuitat." },
 ];
 
 export default function Hero() {
@@ -71,10 +71,15 @@ export default function Hero() {
               <p className={s.title}>
                 <span className={s.line}>
                   <span>{st.a}</span>
-                </span>{" "}
-                <span className={s.line}>
-                  <em>{st.b}</em>
                 </span>
+                {st.b && (
+                  <>
+                    {" "}
+                    <span className={s.line}>
+                      <em>{st.b}</em>
+                    </span>
+                  </>
+                )}
               </p>
               <p className={s.text}>{st.text}</p>
               {i === stages.length - 1 && (
