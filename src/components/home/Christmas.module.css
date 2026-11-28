@@ -332,10 +332,37 @@
   font-style: italic;
   color: var(--gold-soft);
 }
+.facts {
+  margin: 1.8rem auto 0;
+  max-width: 760px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(217, 192, 143, 0.3);
+  border-bottom: 1px solid rgba(217, 192, 143, 0.3);
+}
+.facts div {
+  padding: 1.1rem 1rem;
+}
+.facts div + div {
+  border-left: 1px solid rgba(217, 192, 143, 0.3);
+}
+.facts dt {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.1;
+  color: var(--gold-soft);
+}
+.facts dd {
+  margin: 0.35rem 0 0;
+  font-size: 0.78rem;
+  color: rgba(251, 248, 243, 0.72);
+}
 .launchCtas {
   margin-top: 1.8rem;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
 }
 
 /* Countdown (shared with Countdown.tsx) */
@@ -413,7 +440,28 @@
     letter-spacing: 0.12em;
   }
   .launch {
-    bottom: 6rem; /* clear of the floating WhatsApp button */
+    bottom: 5.5rem; /* clear of the floating WhatsApp button */
+  }
+  .facts {
+    margin-top: 1.2rem;
+  }
+  .facts div {
+    padding: 0.8rem 0.4rem;
+  }
+  .facts dt {
+    font-size: 1.25rem;
+  }
+  .facts dd {
+    font-size: 0.66rem;
+    line-height: 1.4;
+  }
+  .launchCtas {
+    margin-top: 1.2rem;
+  }
+  .launchCtas :global(.btn) {
+    min-height: 44px;
+    padding: 0 1.1rem;
+    font-size: 0.66rem;
   }
 }
 

@@ -4,17 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { ScrollTrigger, prefersReducedMotion } from "@/lib/gsap";
-import { inCategory, formatPrice } from "@/lib/products";
-import { site } from "@/lib/site";
+import { inCategory, formatPrice, prepTime } from "@/lib/products";
+import { waLink } from "@/lib/site";
 import AddButton from "@/components/AddButton";
-import Countdown from "./Countdown";
 import s from "./Christmas.module.css";
 
 /*
   "Noapte de Crăciun" — a pinned scroll scene in three acts:
   1. a round winter window in the night sky, one tree glowing inside it;
   2. the window opens to the whole screen and the trees turn on a carousel, one product per stop;
-  3. the carousel steps back and the launch countdown takes the stage.
+  3. the carousel steps back and the order block takes the stage.
   Snow is a canvas layer that reacts to scroll speed and to the pointer.
 */
 
@@ -33,7 +32,7 @@ const smooth = (e0: number, e1: number, x: number) => {
   const t = clamp((x - e0) / (e1 - e0));
   return t * t * (3 - 2 * t);
 };
-// Scroll map: act 1 (window opens) → act 2 (three stops) → act 3 (launch)
+// Scroll map: act 1 (window opens) → act 2 (three stops) → act 3 (order)
 const A2 = [0.2, 0.84];
 
 export default function Christmas() {
@@ -259,17 +258,33 @@ export default function Christmas() {
           ))}
         </div>
 
-        {/* Act 3 — launch */}
+        {/* Act 3 — the season's promise + order */}
         <div className={s.launch}>
-          <p className="eyebrow">Lansare catalog · 1 decembrie, ora 19:00</p>
+          <p className="eyebrow">Ediție de sezon · serii mici</p>
           <p className={s.launchTitle}>
             Un Crăciun <em>pictat manual</em>
           </p>
-          <Countdown to={site.launch} />
+          <dl className={s.facts}>
+            <div>
+              <dt>Unicat</dt>
+              <dd>Fiecare brăduț e pictat de mână</dd>
+            </div>
+            <div>
+              <dt>{prepTime.craciun}</dt>
+              <dd>Timp de pregătire</dd>
+            </div>
+            <div>
+              <dt>Callebaut</dt>
+              <dd>Ciocolată belgiană, umplută cu cremă</dd>
+            </div>
+          </dl>
           <div className={s.launchCtas}>
             <Link href="/produse#craciun" className="btn btn--gold">
               Toată colecția de Crăciun
             </Link>
+            <a href={waLink("Bună! Aș dori să comand din colecția de Crăciun.")} className="btn btn--light btn--ghost" target="_blank" rel="noopener noreferrer">
+              Comandă pe WhatsApp
+            </a>
           </div>
         </div>
       </div>
