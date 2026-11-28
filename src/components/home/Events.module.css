@@ -4,7 +4,7 @@
   --reveal: 0;
   position: relative;
   height: 520vh;
-  background: #0c1119;
+  background: #140c08;
   color: var(--ivory);
 }
 .sticky {
@@ -14,10 +14,10 @@
   height: 100svh;
   height: 100dvh;
   overflow: hidden;
-  /* midnight table, the blue of the Choco Bar photos, with a warm pool of light in the middle */
+  /* a cocoa table in candlelight: the site's chocolate tones with a warm gold pool in the middle */
   background:
-    radial-gradient(45% 40% at 50% 55%, rgba(217, 170, 100, 0.16), transparent 70%),
-    radial-gradient(120% 90% at 50% 30%, #1c2a3e 0%, #111a27 45%, #090d14 100%);
+    radial-gradient(45% 40% at 50% 55%, rgba(217, 170, 100, 0.2), transparent 70%),
+    radial-gradient(120% 90% at 50% 30%, #3a261b 0%, #24170f 48%, #140c08 100%);
 }
 .sticky > * {
   position: absolute;
